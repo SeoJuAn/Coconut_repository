@@ -36,7 +36,7 @@ def login(request):
     if request.method == "POST":
         id = request.POST['id']
         password = request.POST['password']
-        user = auth.authenticate(request, id, password= password)
+        user = auth.authenticate(request, username = id, password= password)
         if user is not None:
             auth.login(request, user)
             return redirect('/')
