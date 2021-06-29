@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>제품판매업체 회원가입</h1>
+    <form method = "POST" action="{%url 'signup_productcompany' %}">
+        {%csrf_token%}
+        <br>
+        <br>
+        {%if error%}
+            <p>{{error}}</p>
+            <br>
+        {%endif%}
+
+        <h3>ID</h3>
+        <input name = "id" type="text">
+        <br>
+        <h3>비밀번호</h3>
+        <input name = "password" type="password">
+        <br>
+        <h3>비밀번호 확인</h3>
+        <input name = "passwordCheck" type="password">
+        <br>
+        <h3>e-mail</h3>
+        <input name="email" type="text">
+        <br>
+        <h3>전화번호</h3>
+        <input name="phonenumber" type="text">
+        <br>
+        <h3>계좌번호</h3>
+        <input name="accountnumber" type="text">
+        <br>
+        <h3>업체명</h3>
+        <input name="companyname" type="text">
+        <br>
+        <h3>제품 카테고리</h3>
+        <input name="productcategory" type="text">
+        <br>
+        <h3>주소</h3>
+        <input name="address" type="text">
+        <br>
+        <h3>영업시간</h3>
+        <input name="operationtime" type="text">
+        <br>
+        <input type="submit" value="제출하기">
+
+    </form>
+{% endblock %}
