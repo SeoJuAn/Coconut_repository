@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, update_last_login
 from django.contrib import auth
+from django.utils import timezone
 from .models import Customer, StoreOwner, ProductCompany
 
 # Create your views here.
@@ -31,6 +32,13 @@ def signup_customer(request):
         password = request.POST['password']
         email = request.POST['email']
         name = request.POST['name']
+        nickname = request.POST['nickname']
+        address = request.POST['address']
+        phonenumber = request.POST['phonenumber']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        photo = request.POST['photo']
+        sns = request.POST['sns']
         if User.objects.filter(username = id).exists():
             return render(request, 'signup_customer.html',{'error':"이미 존재하는 사용자입니다."})
         if password == request.POST['passwordCheck']:
@@ -42,6 +50,15 @@ def signup_customer(request):
             customer.count = 0
             customer.point = 0
             # 나무님!! 이 부분에 customer 객체들(DB 테이블에 있는 애들) 더 추가해주시면 돼요~
+            customer.nickname = nickname
+            customer.address = address
+            customer.phonenumber = phonenumber
+            customer.subdate = timezone.datetime.now()
+            customer.age = age
+            customer.gender = gender
+            customer.coupon = 0
+            customer.photo = photo
+            customer.sns = sns
             customer.save()
             user = User.objects.create_user(
                 id, password = password,email=email
@@ -60,11 +77,25 @@ def signup_storeowner(request):
         id = request.POST['id']
         password = request.POST['password']
         email = request.POST['email']
+        nickname = request.POST['nickname']
+        name = request.POST['name']
+        phonenumber = request.POST['phonenmuber']
+        sns = request.POST['sns']
         if User.objects.filter(username = id).exists():
             return render(request, 'signup_storeowner.html',{'error':"이미 존재하는 사용자입니다."})
         if password == request.POST['passwordCheck']:
             storeowner = StoreOwner()
             # 나무님!! 이 부분에 StoreOwner 객체들(model.py에 새로 만들고) 새로 추가해주시면 돼요~
+            storeowner.user_id = id
+            storeowner.password = password
+            storeowner.email = email
+            storeowner.point = 0
+            storeowner.count = 0
+            storeowner.nickname = nickname
+            storeowner.user_name = name
+            storeowner.phonenumber = phonenumber
+            storeowner.subdate = timezone.datetime.now()
+            storeowner.sns = sns
             storeowner.save()
             user = User.objects.create_user(
                 id, password = password,email=email
@@ -83,11 +114,26 @@ def signup_productcompany(request):
         id = request.POST['id']
         password = request.POST['password']
         email = request.POST['email']
+        phonenumber = request.POST['phonenumber']
+        accountnumber = request.POST['accountnumber']
+        companyname = request.POST['companyname']
+        productcategory = request.POST['productcategory']
+        address = request.POST['address']
+        operationtime = request.POST['operationtime']
         if User.objects.filter(username = id).exists():
             return render(request, 'signup_productcompany.html',{'error':"이미 존재하는 사용자입니다."})
         if password == request.POST['passwordCheck']:
             productcompany = ProductCompany()
             # 나무님!! 이 부분에 productcompany 객체들(model.py에 새로 만들고) 새로 추가해주시면 돼요~
+            productcompany.user_id = id
+            productcompany.password = password
+            productcompany.email = email
+            productcompany.phonenumber = phonenumber
+            productcompany.accountnumber = accountnumber
+            productcompany.companyname = companyname
+            productcompany.productcategory = productcategory
+            productcompany.address = address
+            productcompany.operationtime = operationtime
             productcompany.save()
             user = User.objects.create_user(
                 id, password = password,email=email
