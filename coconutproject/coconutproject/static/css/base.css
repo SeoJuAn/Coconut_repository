@@ -13,7 +13,7 @@ a {
 
 h1 {
     display: inline;
-    font-size: 48;
+    font-size: 48px;
     font-weight: bold;
     width: 100%;
 }
@@ -55,10 +55,9 @@ h1 {
     border: none;
     background-color: white;
     position: relative;
-    left: 10%;
-    right: 10%;
+    margin-left: 30%; 
     display: block;
-    width: 80%;
+    width: 600px;
     margin-top: 40px;
     text-align: center;
 }
@@ -82,4 +81,11 @@ h1 {
     height: 50px;
     background-color: brown;
     color: white;
+}
+
+.login-small-font {
+    font-size: 20px;
+    font: sans-serif;
+    font-weight: bold;
+    color: black;
 }

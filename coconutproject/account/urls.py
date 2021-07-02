@@ -1,6 +1,6 @@
 from django.urls import path
 from django.urls.resolvers import URLPattern
-from . import views
+from .import views
 
 urlpatterns = [
     path('signup/', views.signup_choice, name = "signup_choice"),
