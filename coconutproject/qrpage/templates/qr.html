@@ -1,0 +1,7 @@
+{%extends 'base.html'%}
+{%block content %}
+
+    {% load qr_code %}
+    {% qr_from_text user size="m" image_format="png" error_correction="L" %}
+
+{%endblock%}

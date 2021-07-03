@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'qr_code',
+    'qrpage.apps.QrpageConfig',
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
