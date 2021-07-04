@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block content %}
+
+    {% load qr_code %}
+    <h1>&nbsp &nbsp User name : {{user}}</h1>
+    <br>
+    {% qr_from_text user size="m" image_format="png" error_correction="L" %}
+
+{%endblock%}

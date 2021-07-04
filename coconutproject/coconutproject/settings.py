@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'qr_code',
+    'qrpage.apps.QrpageConfig',
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
@@ -83,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coconut',
         'USER' : 'root',
-        'PASSWORD' : '0926',
+        'PASSWORD' : '*sja23022302',
         'HOST' : '127.0.0.1',
         'PORT' : '3306'
     }

@@ -18,11 +18,13 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 import home.views
+import qrpage.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home.views.home,name="home"),
     path('home/',include('home.urls')),
     path('account/',include('account.urls')),
+    path('qrpage/',qrpage.views.make_qr,name="qrpage"),
 ]
 urlpatterns +=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

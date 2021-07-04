@@ -79,7 +79,7 @@ def signup_storeowner(request):
         email = request.POST['email']
         nickname = request.POST['nickname']
         name = request.POST['name']
-        phonenumber = request.POST['phonenmuber']
+        phonenumber = request.POST['phonenumber']
         sns = request.POST['sns']
         if User.objects.filter(username = id).exists():
             return render(request, 'signup_storeowner.html',{'error':"이미 존재하는 사용자입니다."})

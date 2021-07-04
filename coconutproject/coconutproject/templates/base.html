@@ -18,28 +18,28 @@
             {%if user.is_authenticated%}
             <ul class="nav-item-left-container">
                 <!-- # 이미지 삽입은 학습되는대로 바로 실행 하겠습니다 -->
-                <li class="nav-item margin-right"><a href="">coconut</a> </li>
+                <li class="nav-item margin-right"><a href="{% url 'home'%}">coconut</a> </li>
                 <li class="nav-item margin-right"><a href="">Store</a> </li>
                 <li class="nav-item margin-right"><a href="">Community</a> </li>
                 <li class="nav-item margin-right"><a href="">Product</a> </li>
             </ul>
 
             <ul class="nav-item-right-container">
-                <li class="nav-item margin-right"><a href="">QR</a> </li>
+                <li class="nav-item margin-right"><a href="{% url 'qrpage'%}">QR</a> </li>
                 <li class="nav-item margin-right"><a href="{% url 'logout'%}">로그아웃</a> </li>
                 <li class="nav-item"><a href="">마이페이지</a> </li>
             </ul>
             {%else%}
             <ul class="nav-item-left-container">
-                <li class="nav-item margin-right"><a href="">coconut</a> </li>
+                <li class="nav-item margin-right"><a href="{% url 'home'%}">coconut</a> </li>
                 <li class="nav-item margin-right"><a href="">Store</a> </li>
                 <li class="nav-item margin-right"><a href="">Community</a> </li>
                 <li class="nav-item margin-right"><a href="">Product</a> </li>
             </ul>
 
-            <ul class="nav-item-right-container">
-                <li class="nav-item margin-right"><a href="">QR</a> </li>
-                <li class="nav-item margin-right"><a href="{% url 'login'%}">로그인 / 회원가입</a> </li>
+            <ul class="nav-item-right-container"></ul>
+                <li class="nav-item margin-right"><a href="{% url 'login'%}">로그인</a> </li>
+                <li class="nav-item margin-right"><a href="{% url 'signup_choice'%}">회원가입</a> </li>
                 <li class="nav-item"><a href="">마이페이지</a> </li>
             </ul>
             {%endif%}
