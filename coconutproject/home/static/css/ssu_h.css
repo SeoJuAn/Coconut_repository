@@ -1,0 +1,51 @@
+:root {
+  /*color*/
+  --mint: #7ad4a9;
+  --brown: #754434;
+  --ivory: #fffff4;
+
+  /*size*/
+
+  /*font size*/
+  --title: 25px;
+  --subtitle: 17px;
+  --content: 15px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 180px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  width: 98.7vw;
+  height: auto;
+  z-index: 2;
+}
+
+.img-text {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  text-align: center;
+}
+.main-content {
+  position: relative;
+}
+
+.main-conetent h2 {
+  color: #ffffff;
+}
+
+.main-conetent h4 {
+  color: #ffffff;
+}

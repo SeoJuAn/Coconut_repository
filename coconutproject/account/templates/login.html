@@ -1,28 +1,38 @@
-{%extends 'base.html'%}
-{%block content %}
+<!DOCTYPE html>
+<html lang="ko">
+
+{% load static %}
+
+<body>
+
+    {% include 'base.html' %}
+
     <div class="login">
-        <h1 class="mint-font">COCONUT</h1>
-        <h1 class="black-font">LOGIN</h1>
-        <form method = "POST" action="{% url 'login'%}">
+        <div class="page-title">
+            <h1 class="mint-font">COCONUT</h1>
+            <h1 class="black-font">LOGIN</h1>
+        </div>
+        <form method = "POST" action="{% url 'login' %}">
             {%csrf_token%}
-            
             {%if error %}
                 <p>{{error}}</p>
             {%endif%}
-            <h3>아이디</h3>
-            <input name = "id" type="text">
-            <h3>비밀번호</h3>
-            <input name = "password" type="password">
-            <br>
-            <h3>로그인 정보 기억하기 or 자동로그인</h3>
-            <br>
-            <input type="submit" value="로그인">
-            <br>
-            <br>
-            <a class="login-small-font" href="signup">회원가입</a>
-            <a class="login-small-font" href="">아이디 찾기</a>
-            <a class="login-small-font" href="">비밀번호 찾기</a>        
+            <div class="page-content">
+                <h3>아이디</h3>
+                <input name = "id" type="text">
+                <h3>비밀번호</h3>
+                <input name = "password" type="password">
+                <br>
+                <h3>로그인 정보 기억하기 or 자동로그인</h3>
+                <br>
+                <input type="submit" value="로그인">
+                <br>
+                <br>
+                <a class="login-small-font" href="signup">회원가입</a>
+                <a class="login-small-font" href="">아이디 찾기</a>
+                <a class="login-small-font" href="">비밀번호 찾기</a>        
+            </div>
         </form>
     </div>
+</body>
     
-{%endblock%}

@@ -9,11 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>coconut</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ssu_a.css' %}">
     
 </head>
 <body>
-    
-
     <nav class="nav-container">
         <div class="item-container">
             {%if user.is_authenticated%}
@@ -47,10 +46,10 @@
         </div>
     </nav>
 
-    <div class="">
+    <main>
         {%block content%}
         {%endblock%}
-    <div>
+    </main>
 
 </body>
 </html>
