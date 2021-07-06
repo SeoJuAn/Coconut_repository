@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <title>coconut</title>
+</head>
 
 <body>
-
     {% include 'base.html' %}
-
     <div class="login">
         <div class="page-title">
             <h1 class="mint-font">COCONUT</h1>
@@ -15,13 +19,11 @@
         <form method = "POST" action="{% url 'login' %}">
             {%csrf_token%}
             {%if error %}
-                <p>{{error}}</p>
+                <p>{{error}}</p> 
             {%endif%}
             <div class="page-content">
-                <h3>아이디</h3>
-                <input name = "id" type="text">
-                <h3>비밀번호</h3>
-                <input name = "password" type="password">
+                <input name = "id" type="text" placeholer="아이디">
+                <input name = "password" type="password" placeholer="비밀번호">
                 <br>
                 <h3>로그인 정보 기억하기 or 자동로그인</h3>
                 <br>
