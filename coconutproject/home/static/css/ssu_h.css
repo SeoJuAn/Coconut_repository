@@ -15,6 +15,9 @@
 h4 {
   font-size: 30px;
 }
+h3 {
+  font-size: 50px;
+}
 
 h2 {
   font-size: 180px;
@@ -34,12 +37,15 @@ img {
 
 .img-text {
   position: absolute;
-  top: 50%;
+  top: 5%;
   left: 15%;
   text-align: center;
 }
 .main-content {
   position: relative;
+  margin: 0;
+  height: 710px;
+  width: 98.7vw;
 }
 
 .main-conetent h2 {
@@ -48,4 +54,29 @@ img {
 
 .main-conetent h4 {
   color: #ffffff;
+}
+.main-slogan {
+  margin-top: 15%;
+}
+.category-box {
+  margin-top: 20px;
+  background-color: var(--ivory);
+  opacity: 0.7;
+  height: 35vw;
+  width: 70vw;
+  padding: 5px;
+}
+.category-content {
+  padding: 5px;
+  margin: 20px 0 30px 0;
+}
+.category-content button {
+  width: 40%;
+  height: 4vw;
+  margin: 3px 0 3px 0;
+  font-size: 20px;
+}
+
+.category-content h4 {
+  margin-bottom: 10px;
 }

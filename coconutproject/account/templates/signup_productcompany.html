@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>제품판매업체 회원가입</h1>
+<div class="page-title">
+    <h1><span style="color: var(--mint);">coconut</span> sign up</h1>
+    <h2>제품 판매 업체</h2>
+</div>
+<div class="signup-box">
     <form method = "POST" action="{%url 'signup_productcompany' %}">
         {%csrf_token%}
         <br>
@@ -9,38 +13,39 @@
             <p>{{error}}</p>
             <br>
         {%endif%}
+        <div class="signup-content">
 
-        <h3>ID</h3>
-        <input name = "id" type="text">
-        <br>
-        <h3>비밀번호</h3>
-        <input name = "password" type="password">
-        <br>
-        <h3>비밀번호 확인</h3>
-        <input name = "passwordCheck" type="password">
-        <br>
-        <h3>e-mail</h3>
-        <input name="email" type="text">
-        <br>
-        <h3>전화번호</h3>
-        <input name="phonenumber" type="text">
-        <br>
-        <h3>계좌번호</h3>
-        <input name="accountnumber" type="text">
-        <br>
-        <h3>업체명</h3>
-        <input name="companyname" type="text">
-        <br>
-        <h3>제품 카테고리</h3>
-        <input name="productcategory" type="text">
-        <br>
-        <h3>주소</h3>
-        <input name="address" type="text">
-        <br>
-        <h3>영업시간</h3>
-        <input name="operationtime" type="text">
-        <br>
-        <input type="submit" value="제출하기">
-
+            <h3>ID</h3>
+            <input name = "id" type="text">
+            <br>
+            <h3>비밀번호</h3>
+            <input name = "password" type="password">
+            <br>
+            <h3>비밀번호 확인</h3>
+            <input name = "passwordCheck" type="password">
+            <br>
+            <h3>e-mail</h3>
+            <input name="email" type="text">
+            <br>
+            <h3>전화번호</h3>
+            <input name="phonenumber" type="text">
+            <br>
+            <h3>계좌번호</h3>
+            <input name="accountnumber" type="text">
+            <br>
+            <h3>업체명</h3>
+            <input name="companyname" type="text">
+            <br>
+            <h3>제품 카테고리</h3>
+            <input name="productcategory" type="text">
+            <br>
+            <h3>주소</h3>
+            <input name="address" type="text">
+            <br>
+            <h3>영업시간</h3>
+            <input name="operationtime" type="text">
+        </div>
+        <input type="submit"  class="signup-submit" value="제출하기">
     </form>
+</div>
 {% endblock %}

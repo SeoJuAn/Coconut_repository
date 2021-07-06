@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>가입하고자 하는 카테고리를 선택하세요</h1>
-    <form method = "POST" action="{%url 'signup_choice' %}">
-        {%csrf_token%}
-        <br>
-        <br>
+    <div class="page-title">
+        <h1>COCONUT SIGN UP</h1>
+        <h2>가입하고자 하는 카테고리를 선택하세요</h2>
+    </div>
+    <div class="signup-box">
+        <form method = "POST" action="{%url 'signup_choice' %}">
+            {%csrf_token%}
+            <br>
+            <br>
+            <h3>Category</h3>
+            <div class="choice-box">
+                <!-- <input name = "choice" type="text"> -->
+                <input type="radio" id="customer" name="choice" value="customer">
+                <label for="customer">고객</label><br>
+                <input type="radio" id="storeowner" name="choice" value="storeowner">
+                <label for="storeowner">가맹점주</label><br>
+                <input type="radio" id="productcompany" name="choice" value="productcompany">
+                <label for="productcompany">제품제조업체</label>
 
-        <h3>Category</h3>
-        <!-- <input name = "choice" type="text"> -->
-        <input type="radio" id="customer" name="choice" value="customer">
-        <label for="customer">고객</label><br>
-        <input type="radio" id="storeowner" name="choice" value="storeowner">
-        <label for="storeowner">가맹점주</label><br>
-        <input type="radio" id="productcompany" name="choice" value="productcompany">
-        <label for="productcompany">제품제조업체</label>
-        <br>
-        <br>
-        <input type="submit" value="회원가입">
-    </form>
+            </div>           
+            <br>
+            <input type="submit" class="signup-submit" value="회원가입">
+        </form>
+    </div>
 {% endblock %}
