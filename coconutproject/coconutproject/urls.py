@@ -26,5 +26,7 @@ urlpatterns = [
     path('home/',include('home.urls')),
     path('account/',include('account.urls')),
     path('qrpage/',qrpage.views.make_qr,name="qrpage"),
+    path('scan/',qrpage.views.scan_qr,name="scan"),
+    path('qr_scan',qrpage.views.scan_qr_page,name = "qr_scan")
 ]
 urlpatterns +=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
