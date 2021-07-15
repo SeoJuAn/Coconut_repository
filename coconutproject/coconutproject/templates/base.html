@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 
 {% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>coconut</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/ssu_a.css' %}">
-</head>
-
-<body>
     <nav class="nav-container">
         {%if user.is_authenticated%}
             <div class="nav-item-left-container">
                 <div class="nav-logo">
                     <a href = "{% url 'home'%}">
-                       <img src="../static/img/coconut_logo.jpg" class="nav-logo-img">
+                        <img src="../static/img/coconut_logo.jpg" class="nav-logo-img">
                     </a>
                 </div>
 
@@ -57,11 +45,11 @@
             </div>
         {%endif%}
     </nav>
-
+{% comment %} 
     <main>
         {%block content%}
         {%endblock%}
     </main>
 
 </body>
-</html>
+</html> {% endcomment %}

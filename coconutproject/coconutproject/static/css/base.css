@@ -11,11 +11,16 @@
 }
 
 @font-face {
-  font-family: 'InfinitySans-RegularA1';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+  font-family: "InfinitySans-RegularA1";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
-} 
+}
+
+* {
+  font-family: "InfinitySans-RegularA1";
+}
 
 body {
   margin: 0;
@@ -73,7 +78,7 @@ h1 {
 }
 
 .nav-item-menu li {
-  padding : 10px 20px;
+  padding: 10px 20px;
 }
 
 .nav-item-right-container {
@@ -83,7 +88,7 @@ h1 {
 }
 
 .nav-item-right-container li {
-  padding : 10px 20px;
+  padding: 10px 20px;
 }
 
 /*account*/
@@ -94,7 +99,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin: 20px 80px;
-  font-family: 'InfinitySans-RegularA1';
+  font-family: "InfinitySans-RegularA1";
   list-style: none;
 }
 
@@ -116,12 +121,12 @@ h1 {
   align-items: center;
 }
 .submit-login p {
- margin: 0 0;
+  margin: 0 0;
 }
 
 .submit-login a {
   color: var(--brown);
- }
+}
 .login-container {
   display: flex;
   flex-direction: column;
@@ -182,8 +187,8 @@ h1 {
 }
 
 .login-small-font {
-font-size: 15px;
-font-weight: bold;
-color: black;
-margin-right: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  margin-right: 20px;
 }
