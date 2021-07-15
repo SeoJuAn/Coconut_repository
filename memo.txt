@@ -20,3 +20,6 @@
 -models.py, views.py, store_registration.html 작성
 -url 연결은 헷갈려서 아직 못했어요 부탁드려요..
 -views.py에서 어떻게 받아야 할지 모르겠는 부분은 우선 주석처리 해뒀어요 나중에 수정해야 합니닷
+
+<2021.07.15 쑤>
+-home css 수정

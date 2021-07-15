@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coconut',
         'USER' : 'root',
-        'PASSWORD' : 'wr140497@@',
+        'PASSWORD' : '0926',
         'HOST' : '127.0.0.1',
         'PORT' : '3306'
     }
