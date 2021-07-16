@@ -29,6 +29,7 @@ body {
 
 ul {
   list-style: none;
+  margin: none;
 }
 
 a {
@@ -96,11 +97,11 @@ h1 {
 .login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 20px 80px;
   font-family: "InfinitySans-RegularA1";
   list-style: none;
+  height: 600px;
 }
 
 .page-title {
@@ -119,6 +120,8 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 500px;
+  height: 300px;
 }
 .submit-login p {
   margin: 0 0;
@@ -153,7 +156,7 @@ h1 {
 .login-box {
   width: 400px;
   height: 50px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   border: 1px 2px;
   border-color: var(--brown);
   border-radius: 10px;
@@ -175,15 +178,29 @@ h1 {
 }
 
 .remember {
-  font-size: 15px;
-  font-weight: bold;
-  color: black;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0;
+  width: 400px;
+}
+select {
+  width: 120px;
+  height: 30pxpx;
+  font-size: 13px;
+  border: 1px 2px;
+  border-color: var(--brown);
+  background-color: var(--mint);
+  border-radius: 5px;
+  margin-right: 10px;
+  color: var(--ivory);
+  text-align: center;
 }
 
 .sign-login {
-  width: 408px;
   display: flex;
   justify-content: flex-start;
+  margin: 0px;
+  width: 400px;
 }
 
 .login-small-font {
@@ -191,4 +208,8 @@ h1 {
   font-weight: bold;
   color: black;
   margin-right: 20px;
+}
+.bottom-login-container{
+  display: flex;
+  justify-content: flex-start;
 }

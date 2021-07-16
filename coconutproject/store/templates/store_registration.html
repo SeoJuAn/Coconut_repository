@@ -1,7 +1,18 @@
-<!-- 가맹점 등록 페이지 -->
+<!DOCTYPE html>
+<html lang="en">
 
-{% extends 'base.html' %}
-{% block content %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago.css' %}" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'base.html' %}
     <div>
         <h3>가게 이름</h3>
         <input name="storename" type="text">
@@ -41,4 +52,5 @@
         <br>
     </div>
     <input type="submit" value="제출하기">
-{% endblock %}
+</body>
+</html>
