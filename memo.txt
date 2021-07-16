@@ -24,3 +24,7 @@
 <2021.07.15 쑤>
 -home css 수정
 - extends--> include로 변경
+
+<2021.07.16 리오>
+-store map 생성
+-가맹점 등록 후 map에 위치 표시

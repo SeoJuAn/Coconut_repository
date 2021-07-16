@@ -3,6 +3,26 @@ from .models import Store
 
 # Create your views here.
 
+
+# 지도 생성
+def map(request):
+    store = Store.objects.all()
+    # addresses = []
+    # for i in range(len(store)):
+    #     addresses.append(store[i].address)
+    storeINFO = []
+    for i in range(len(store)):
+        name_and_address = []
+        name_and_address.append(store[i].storename)
+        name_and_address.append(store[i].address)
+
+        storeINFO.append(name_and_address)
+
+
+
+    # return render(request,'map.html')
+    return render(request,'map.html',{'storeINFO':storeINFO})
+
 #가맹점 등록
 def store_registration(request):
     if request.method == "POST":
@@ -33,7 +53,11 @@ def store_registration(request):
         store.container_type = container_type
         store.parking = parking
         store.storename = storename
+        store.save()
         return redirect('/')
 
     else:
         return render(request, 'store_registration.html')
+
+
+
