@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Tago_detail.css' %}" />
+        <script src="/static/js/Tago_detail.js" defer></script>
+        <title> detail page</title>
+    </head>
+    <body>
+        {% include 'base.html'%}
+        <div class="detail_container">
+            <div class="detail_store_inform">
+                <div class="detail_title">
+                    <div class="detail_storename"></div>
+                    <form method = "POST" action="{%url 'store_like' %}">
+                        {%csrf_token%}
+                        <div class="cmd">
+                            <input type="hidden" class="storeid" id="storeid" name="storeid" value="storeid">
+                            <input type="submit" name="save" id="save" value="찜하기" class="cmd_submit">
+                        </div>
+                    </form>
+                </div>
+                <div class="detail_contents">
+                    <div class="detail_storecontents">
+                    </div>
+                    <div class="detail_storepictures">
+                    </div>
+                </div>
+            </div>
+            <div class="detail_line"></div>
+            <div class="detail_reviews">
+                <div class="detail_review_title">
+                    <p>리뷰</p>
+                    <div class="detail_write_review">
+                    </div>
+                </div>
+                <div class="detail_review_box">
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html> 
+
+

@@ -1,0 +1,57 @@
+
+{% load static %}
+
+<body class ="main-nav">
+   <nav class="main-nav-container">
+        {%if user.is_authenticated%}
+            <div class="nav-item-left-container">
+                <div class="nav-logo">
+                    <a href = "{% url 'home'%}">
+                       <img src="../static/img/coconut_logo.png" class="nav-logo-img">
+                    </a>
+                </div>
+
+                <div class="nav-item-menu">
+                    <li><a href="{% url 'map'%}">Store</a> </li>
+                    <li><a href="{% url 'commu_main'%}">Community</a> </li>
+                    <li><a href="">Product</a> </li>
+                </div>
+            </div>
+
+            <div class="nav-item-right-container">
+            <li><a href="{% url 'store_registration'%}">가맹점 등록</a> </li>
+                <li><a href="{% url 'qrpage'%}">QR</a> </li>
+                <li><a href="{% url 'qr_scan'%}">SCAN</a> </li>
+                <li><a href="{% url 'logout'%}">로그아웃</a> </li>
+                <li><a href="{% url 'mypoint'%}">마이페이지</a> </li>
+            </div>
+        {%else%}
+            <div class="nav-item-left-container">
+                <div class="nav-logo">
+                   <a href = "{% url 'home'%}">
+                       <img src="../static/img/coconut_logo.png" class="nav-logo-img">
+                    </a>
+                </div>
+
+                <div class="nav-item-menu">
+                    <li><a href="{% url 'map'%}">Store</a> </li>
+                    <li><a href="{% url 'commu_main'%}">Community</a> </li>
+                    <li><a href="">Product</a> </li>
+                </div>
+            </div>
+
+            <div class="nav-item-right-container"></ul>
+                <li><a href="{% url 'login'%}">로그인</a> </li>
+                <li><a href="{% url 'signup_choice'%}">회원가입</a> </li>
+                <li><a href="{% url 'mypoint'%}">마이페이지</a> </li>
+            </div>
+        {%endif%}
+    </nav>
+
+    <main>
+        {%block content%}
+        {%endblock%}
+    </main>
+
+</body>
+</html>

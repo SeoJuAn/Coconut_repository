@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/mypage_privacy.css' %}" type="text/css">
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+  <title>coconut</title>
+</head>
+
+<body>
+ {% include 'base.html' %}
+
+    <form method = "POST" action="{%url 'changeprivacy' %}">
+    {%csrf_token%}
+    <div class="mypage-container">
+      {% include 'mypage.html' %}
+    <div class="privacy-box">
+      <div class="privacy-content">
+        <h3>이름</h3>
+        <input name="name" type="text">
+        <br>
+        <h3>닉네임</h3>
+        <input name="nickname" type="text">
+        <br>
+        <h3>e-mail</h3>
+        <input name="email" type="text">
+        <br>
+        <h3>주소</h3>
+        <input name="address" type="text">
+        <br>
+        <h3>전화번호</h3>
+        <input name="phonenumber" type="text">
+        <h3>나이</h3>
+        <input name="age" type="text">
+        <br>
+        <h3>성별</h3>
+        <input name="gender" type="text">
+        <br>
+        <h3>사진</h3>
+        <input name="photo" type="text">
+        <br>
+        <h3>SNS</h3>
+        <input name="sns" type="text">
+      </div>
+      <br>
+      <input type="submit" class="privacy-submit" value="변경하기">
+    </form>
+  </div> 
+</div>
+</body>
+</html>
+
+<script>
+    
+</script>

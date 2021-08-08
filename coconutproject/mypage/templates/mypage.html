@@ -1,0 +1,27 @@
+{% load static %}
+<div class="mypage_left_navbar">
+  <div class="my_coconut_container">
+    <li class="my_coconut_title">my coconut</li>
+    <li class="my_coconut_contents">
+      <a href="{% url 'changeprivacy' %}">개인 정보 수정</a>
+    </li>
+    <li class="my_coconut_contents">
+      <a href="{% url 'mypoint'%}">포인트 조회</a>
+    </li>
+  </div>
+  <div class="my_store_container">
+    <li class="my_store_title">my store</li>
+    <li class="my_store_contents">
+      <a href="{% url 'mypageReview' %}">리뷰 관리</a>
+    </li>
+    <li class="my_store_contents">
+      <a href="{% url 'wishstore' %}">찜한 가게들</a>
+    </li>
+  </div>
+  <div class="my_community_container">
+    <li class="my_community_title">my community</li>
+    <li class="my_community_contents">작성한 글</li>
+    <li class="my_community_contents">나의 댓글 관리</li>
+    <li class="my_community_contents">좋아요한 글 목록</li>
+  </div>
+</div>

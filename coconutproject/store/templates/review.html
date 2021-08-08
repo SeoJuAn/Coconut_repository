@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Tago_review.css' %}" />
+    <script src="/static/js/Tago_review.js" defer></script>
+    <title>coconut</title>
+</head>
+<body>
+    {% include 'base.html'%}
+    <div class="review_container">
+    <form method="POST" action="{% url 'store_review' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class = 'title'></div>
+        <div class="review_rating_merchandise">
+            <div class="rating_merchandise_title">
+                <a class= "mint">상품</a><a>은 어떠했나요?</a>
+            </div>
+            <div class="rating_merchandise">
+                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                <input type="checkbox" name="product_review_score" id="rating1" value="1" class="rate_radio_m" title="1점">
+                <label for="rating1"></label>
+                <input type="checkbox" name="product_review_score" id="rating2" value="2" class="rate_radio_m" title="2점">
+                <label for="rating2"></label>
+                <input type="checkbox" name="product_review_score" id="rating3" value="3" class="rate_radio_m" title="3점" >
+                <label for="rating3"></label>
+                <input type="checkbox" name="product_review_score" id="rating4" value="4" class="rate_radio_m" title="4점">
+                <label for="rating4"></label>
+                <input type="checkbox" name="product_review_score" id="rating5" value="5" class="rate_radio_m" title="5점">
+                <label for="rating5"></label>
+            </div>
+        </div>
+
+        <div class="review_rating_delivery">
+            <div class="rating_delivery_title">
+                <a class= "brown">TAKE OUT</a><a>은 어떠했나요?</a>
+            </div>
+            <div class="rating_delivery">
+                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                <input type="checkbox" name="takeout_review_score" id="rating6" value="1" class="rate_radio_d" title="1점">
+                <label for="rating6"></label>
+                <input type="checkbox" name="takeout_review_score" id="rating7" value="2" class="rate_radio_d" title="2점">
+                <label for="rating7"></label>
+                <input type="checkbox" name="takeout_review_score" id="rating8" value="3" class="rate_radio_d" title="3점" >
+                <label for="rating8"></label>
+                <input type="checkbox" name="takeout_review_score" id="rating9" value="4" class="rate_radio_d" title="4점">
+                <label for="rating9"></label>
+                <input type="checkbox" name="takeout_review_score" id="rating10" value="5" class="rate_radio_d" title="5점">
+                <label for="rating10"></label>
+            </div>
+        </div>
+        <div class="review_contents_container">
+            <a>리뷰를 남겨주세요.</a>
+            <div class="review_contents">
+                <textarea rows="8" cols="100" name="content" class="review_textarea"></textarea>
+            </div>
+            <input type="hidden" class="storename" id="storename" name="storename" value=" ">
+
+            {% comment %} 사진 업로드 {% endcomment %}
+            <div class="small-registration-box">
+                    <h3>사진</h3>
+                    <input name="photo" type="file" multiple>
+                </div>
+
+            <div class="cmd">
+                <input type="submit" name="save" id="save" value="등록" class="cmd_submit">
+            </div>
+        </div>
+    </form>
+    </div>
+</body>
+</html>
+
+
+<script>
+    storename = getParameterByName('storename')
+    var title = document.getElementsByClassName('title')
+    var storename_parameter = document.getElementById('storename')
+    title[0].innerHTML = '<h1>'+storename+'에 대한 당신의 생각을 알려주세요!'+'</h1>'
+    console.log(storename)
+    storename_parameter.value = String(storename)
+
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+</script>

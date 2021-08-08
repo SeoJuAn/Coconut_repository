@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>coconut</title>
+  </head>
+
+  <body class="main">
+    {% include 'base.html' %}
+    <div class="mypage-container">
+        {% include 'mypage.html' %}
+            <div class="mypage_right_container">
+                <div class="point_box">
+                    <div class="holdingpoints">
+                        <li>보유 포인트</li>
+                        <li class="point_number">{{point}} point</li>
+                    </div>
+                    <div class="point_box_line"></div>
+                    <div class="points_earned">
+                        <li>적립 환경 포인트</li>
+                        <li class="point_number">{{point}} point</li>
+                    </div>
+                </div>
+                <div class="point_date">
+                    <li>7월 25일</li>
+                </div>
+                <div class="point_contents">
+                    <div class="point_contents_box_en">
+                        <li class="point_icon"> 
+                            <span class="iconify" data-icon="ic:sharp-control-point" data-inline="false" style="color: #7ad4a9;" data-width="60px" data-height="60px"></span>                    
+                        </li>
+                        <div class="point_contents_detail">
+                            <li class="point_contents_date">2021년 7월 25일</li>
+                            <li>환경 포인트 적립</li>
+                            <li>알맹 상점</li>
+                        </div>
+                        <div class="environment_points">
+                            <li>365원</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="point_contents">
+                    <div class="point_contents_box">
+                        <li class="point_icon"> 
+                            <span class="iconify" data-icon="ic:sharp-control-point" data-inline="false" style="color: #754434;" data-width="60px" data-height="60px"></span>                    
+                        </li>
+                        <div class="point_contents_detail">
+                            <li class="point_contents_date">2021년 7월 25일</li>
+                            <li>제품 구매 적립</li>
+                            <li>알맹 상점</li>
+                        </div>
+                        <div class="environment_points">
+                            <li>365원</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
+

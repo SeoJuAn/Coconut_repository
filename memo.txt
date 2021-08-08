@@ -1,0 +1,70 @@
+<2021.07.04 쑤>
+-main페이지 css 작업중(ssu_h.css)
+-navbar 길이 살짝 줄였어요!!
+
+<2021.07.05 리오>
+-qr기능 넣었어요!
+-db 수정
+-home.html연결
+
+<2021.07.06 쑤>
+-main페이지 수정
+-회원가입 페이지 수정중
+
+<2021.07.06 타고>
+-nav bar 반응형 수정 중
+-로그인 창 수정 중
+
+<2021.07.14 나무>
+-store 앱 생성
+-models.py, views.py, store_registration.html 작성
+-url 연결은 헷갈려서 아직 못했어요 부탁드려요..
+-views.py에서 어떻게 받아야 할지 모르겠는 부분은 우선 주석처리 해뒀어요 나중에 수정해야 합니닷
+
+<2021.07.15 쑤>
+-home css 수정
+- extends--> include로 변경
+
+<2021.07.16 리오>
+-store map 생성
+-가맹점 등록 후 map에 위치 표시
+
+<2021.07.18 리오>
+-map에서 마커 클릭시 detail 페이지로 넘어가도록 함.
+-detail페이지에 db에 있는 내용들이 보여지도록 함.
+
+<2021.07.18 타고>
+가맹점 등록과 qr 페이지 css 수정
+
+<2021.07.21 타고>
+-review page html/css 구현
+
+<2021.07.23 타고>
+-mypage 좌측 navbar 구현
+-logo가 살짝 올라간 점 해결 못함
+
+<2021.07.26 나무>
+-review.html 수정
+-store 앱 views.py 수정
+-store 앱 models.py 수정
+-review.html에서 form 태그 위치 맞는지 확인
+-review.html에서 store_num, storeowner_id, review_num, photo를 받아서 넘겨주는 부분은 아직 구현하지 못함
+
+<2021.08.01 리오>
+-detail 페이지에 사진 여러장 등록하기 -> store.view , detail html 수정
+-review에 storeowner_id 저장 -> review html 수정, store view 수정
+-review 사진 업로드 -> store.model, store.admin, store.view, review.html 수정
+* model과 admin이 수정되서 migrate 해주셔야 합니다!
+
+<2021.08.01 쑤>
+-my page 리뷰관리 부분 작성
+-main navbar 수정
+
+<2021.08.03 리오>
+-리뷰 페이지 별점 에러 수정
+-마이페이지 작성한 리뷰 부분 백엔드 연결
+
+<2021.08.05 리오>
+-마이페이지 찜한 가게 백엔드 연결
+-마이페이지 개인정보 수정 백엔드 연결
+-회원가입 에러 수정

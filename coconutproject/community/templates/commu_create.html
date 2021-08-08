@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ssu_c.css' %}" />
+    <title>community create</title>
+  </head>
+  <body>
+    {% include 'base.html'%}
+    <main>
+        <!-- <div class="content"></div>
+        <h1>글쓰기</h1> -->
+        <div class="write-container">
+          <form method="POST" action="{%url 'commu_create' %}">
+            {%csrf_token%} 
+            <!-- <input type="text" name="title" cols="40" />-->
+            <div class="write-area">
+                <input type="text" id="title" name="title" cols="70" rows="1" placeholder="title"></input>
+                <hr>
+                <textarea id="content" name="content" cols="70" rows="20" placeholder="content"></textarea>
+            </div>
+            <input class="upload-button" type="submit" value="업로드" />
+          </form>
+        </div>
+    </main>
+  </body>
+</html>

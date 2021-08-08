@@ -1,0 +1,206 @@
+:root {
+    /*color*/
+    --mint: #7ad4a9;
+    --brown: #754434;
+    --ivory: #fffff4;
+  
+  /*size*/
+
+  /*font size*/
+  --title: 25px;
+  --subtitle: 17px;
+  --content: 15px;
+}
+.review_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 680px;
+
+
+}
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title h1 {
+    font-size: 1em;
+    margin: 3% 0;
+}
+.review_rating_merchandise {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 1% 0;
+}
+.review_rating_merchandise a {
+    color: black;
+}
+
+.review_rating_delivery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 1% 0;
+}
+
+.review_rating_delivery a {
+    color: black;
+}
+
+.wrap{
+    max-width: 480px;
+    margin: 0 auto; /* 화면 가운데로 */
+    background-color: #fff;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+.reviewform textarea{
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+/*상품평가*/
+.rating_merchandise_title {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.rating_merchandise_title .mint {
+    color: var(--mint);
+}
+.rating_merchandise {
+    margin: 1% 0;
+}
+
+.rating_merchandise .rate_radio_m {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0.001;
+    width: 60px;
+    height: 60px;
+    background-color:white;
+    cursor: pointer;
+    vertical-align: top;
+    display: none;
+    margin: 1% 0;
+}
+
+.rating_merchandise .rate_radio_m + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    cursor: pointer;
+    background-color: silver;
+}
+.rating_merchandise .rate_radio_m:checked + label {
+    background-color: var(--mint);
+}
+
+/*배달평가*/
+.rating_delivery_title {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+
+}
+.rating_delivery_title .brown {
+    color: var(--brown);
+}
+.rating_delivery {
+    margin: 1% 0;
+}
+.rating_delivery .rate_radio_d {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0.001;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: top;
+    display: none;
+}
+
+.rating_delivery .rate_radio_d + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+    cursor: pointer;
+    background-color:silver;
+}
+.rating_delivery .rate_radio_d:checked + label {
+    background-color: var(--brown);
+}
+
+.review_contents_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.review_contents_container a{
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+.review_contents {
+    display: flex;
+    justify-content: center;
+    margin: 0.5% 0;
+}
+
+.warning_msg {
+    display: none;
+    position: relative;
+    text-align: center;
+    background: #ffffff;
+    line-height: 26px;
+    width: 100%;
+    color: red;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+}
+
+.cmd {
+    display: flex;
+    justify-content: center;
+}
+.cmd_submit {
+    display: flex;
+    justify-content: center;
+    background-color: var(--mint);
+    border-color: var(--ivory);
+    color: var(--ivory);
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 41vw;
+    height: 3.5vw;
+}
+
+.cmd_submit:hover {
+    background-color: var(--ivory);
+    border-color: var(--mint);
+    color: var(--mint);
+  }
+  

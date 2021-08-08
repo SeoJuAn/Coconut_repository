@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <title>coconut</title>
+  </head>
+
+  <body class="main">
+    {% include 'base.html' %}
+    <div class="mypage-container">
+        {% include 'mypage.html' %}
+            <div class="mypage_right_container">
+                <div class="order">
+                    <p>현재 진행 중인 주문이 없습니다.</p>
+                </div>
+                <div class="order_title_box">
+                    <p>회원 주문내역</p>
+                </div>
+                <div class="order_contents_box">
+                    <div class="order_box_top">
+                        <li>Take out</li>
+                        <li>2021년 08월 04일</li>
+                    </div>
+                    <div class="order_line"></div>
+                    <div class="order_contents">
+                        <div class="order_picture"></div>
+                        <div class="order_contents_detail">
+                            <li>동대문 엽기 떡볶이</li>
+                            <li>주문내역 : 엽기반반X1, 주먹김밥</li>
+                        </div>
+                        <div class="order_options">
+                            <div class="order_receipt">영수증 확인하기</div>
+                            <div class="reorder_button">재주문하기</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/ssu_m.css' %}" type="text/css">
+    <title>my page</title>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="mypage-container">
+        {% include 'mypage.html' %}
+        <class class="mypage-right">
+            <div class="purchasing">
+                <p>현재 진행 중인 주문이 없습니다.</p>
+            </div>
+            <div class="mini-nav">
+                <div class="mini-nav-item">
+                    <button onclick="writeReview()">리뷰 작성</button>
+                </div>
+                <div class="mini-nav-item">
+                    <button onclick="written()">작성한 리뷰</button>
+                </div>
+            </div>
+            <div class="written-container" id="written">
+                <div class="review-item" >
+                    <div class="review-top">
+                        <div class="review-storetitle">
+                            {% comment %} <img src="../static/img/빙수.jpg" alt=""> {% endcomment %}
+                            {% comment %} <h4>알맹 상점 코코넛조림</h4> {% endcomment %}
+                        </div>
+                        {% comment %} 
+                        <div class="ud-button">
+                            <button>수정</button>
+                            <button>삭제</button>
+                        </div> {% endcomment %}
+
+                    </div>
+                    {% comment %} <div class="review-content">
+                        <p class="date">2021.07.21</p>
+                        <p class="content">상품평 내용</p>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+            <div class="new-review-conatainer" id="write">
+                <div class="new-review-item">
+                    <img src="../static/img/빙수.jpg" alt="">
+                    <div class="view">
+                        <p class="date">2021.07.21</p>
+                        <p class="store">알맹상점</p>
+                        <p class="menu">낙지 젓갈</p>
+                    </div>
+                    <button >리뷰작성</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    function writeReview(){        
+        console.log("click")
+        var writeContent=document.getElementById("write");
+        var writtenContent=document.getElementById("written")
+        writeContent.style.display = "block";
+        writtenContent.style.display = "none";
+    }
+
+    function written(){        
+        console.log("click")
+        var writeContent=document.getElementById("write");
+        var writtenContent=document.getElementById("written")
+        writeContent.style.display = "none";
+        writtenContent.style.display = "block";
+
+    }
+
+
+    
+    var review_item=document.getElementsByClassName("review-item");
+    var reviews = {{reviews|safe}}
+    for(var i in reviews){
+        store = reviews[i][0]
+        date = reviews[i][1]
+        content = reviews[i][2]
+        number = reviews[i][3]
+
+        var titleDIV = document.createElement("div")
+        titleDIV.innerHTML = "<br><br><h4>"+store+"</h4>"
+        titleDIV.setAttribute("class","review-storetitle")
+
+        /*
+        var buttonDIV = document.createElement("div")
+        buttonDIV.innerHTML = "<button>수정</button>"+"<button>삭제</button>"
+        buttonDIV.setAttribute("class","review-top")
+        */
+        var boxDIV = document.createElement("div")
+        boxDIV.setAttribute("class","review-content")
+
+        var dateDIV = document.createElement("div")
+        dateDIV.innerHTML = String(date)
+        dateDIV.setAttribute("class","date")
+
+        var contentDIV = document.createElement("div")
+        contentDIV.innerHTML = String(content)
+        contentDIV.setAttribute("class","content")
+
+        boxDIV.appendChild(dateDIV)
+        boxDIV.appendChild(contentDIV)
+
+        review_item[0].appendChild(titleDIV)
+        //review_item[0].appendChild(buttonDIV)
+        review_item[0].appendChild(boxDIV)
+    }
+</script>

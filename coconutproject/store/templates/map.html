@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/ssu_s.css' %}"/>
+		<title>STORE</title>
+
+		<style>
+			.map {position:relative;overflow:hidden;width:100%;height:100%;}
+			.radius_border{border:1px solid #919191;border-radius:5px;}     
+			.custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+			.custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+			.custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}       
+			.custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+			.custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}    
+			.custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+			.custom_typecontrol .selected_btn:hover {color:#fff;}   
+			.custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+			.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+			.custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}             
+			.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}            
+		</style>
+	</head>
+
+	
+  	<body>
+		{% include 'base.html'%}
+		<main class="map">
+
+{% comment %} 		
+			<!-- 지도 오른쪽 식당 검색창 -->
+			<div class= "map-right" style = "height: 640px"> 
+				<div class="search-store">
+					<input type="text" class="">
+					<input type="text">
+				</div>
+				<div class="store-list">
+					<div class="store-item" onclick='onmap()'>
+						<p class="store-name">원당해물탕(식당이름)</p>
+						<p class="store-intro">어쩌고 저쩌고 .......(식당 설명)</p>
+						<div>
+							<img src="" alt="">
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>	 {% endcomment %}
+			<div id="map" style="width: 100%; height: 640px"></div>
+
+			<div class="custom_typecontrol radius_border">
+				<span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">Total</span>
+				<span id="btnSkyview" class="btn" onclick="setMapType('skyview')">Near</span>
+			</div>
+
+
+
+			<!-- 지도 위에 식당 상세 페이지 -->
+			<div class="on-map" style = "height: 640px">
+				<div class="on-map-title">
+					
+				</div>
+				<div class="sub-nav">
+					<div class="sub-nav-item">
+						<div>홈</div>
+					</div>
+					<div class="sub-nav-item">
+						메뉴
+					</div>
+					<div class="sub-nav-item">
+						리뷰
+					</div>
+					<div class="sub-nav-item">
+						주문
+					</div>
+				</div>
+
+				<div class = "storeinfo">
+					{% for photo in photos.all%}
+    					<img src="{{photo.image.url}}" width="50"><br>
+					{% endfor %}
+				</div>
+
+
+			</div>	
+		</main>
+	</body>
+</html>
+
+<!-- <script
+  type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d9acc44abc98da7e8e88b5d3ed499502"
+></script> -->
+
+<script
+  type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d9acc44abc98da7e8e88b5d3ed499502&libraries=services,clusterer,drawing"
+></script>
+<script>
+
+  {% comment %} var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	  mapOption = {
+		  center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		  level: 3 // 지도의 확대 레벨
+	  };
+
+  // 지도를 생성합니다
+  var map = new kakao.maps.Map(mapContainer, mapOption); {% endcomment %}
+
+
+function setMapType(maptype) { 
+    var roadmapControl = document.getElementById('btnRoadmap');
+    var skyviewControl = document.getElementById('btnSkyview'); 
+    if (maptype === 'roadmap') {
+        roadmapControl.className = 'selected_btn';
+        skyviewControl.className = 'btn';
+		currentposition(0)
+    } else {
+        skyviewControl.className = 'selected_btn';
+        roadmapControl.className = 'btn';
+		selected_store = 1;
+		currentposition(1)
+    }
+}
+currentposition(0)
+// 100 ~ 147 현재위치
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+function currentposition(selected_store){
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	  mapOption = {
+		  center: new kakao.maps.LatLng(37.3645248,126.9613319), // 지도의 중심좌표
+		  level: 3 // 지도의 확대 레벨
+	  };
+
+	// 지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	/*
+	if (navigator.geolocation) {
+		
+		// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		navigator.geolocation.getCurrentPosition(function(position) {
+			
+			var lat = position.coords.latitude, // 위도
+				lon = position.coords.longitude; // 경도
+			
+			var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+				message = '<div style="width:150px;text-align:center;padding:6px 0;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
+			
+			// 마커와 인포윈도우를 표시합니다
+			displayMarker(locPosition, message,map);
+
+
+			//현재위치 먼저 표기하고 가맹점 위치표시 함수 호출
+			storeposition(lat,lon,selected_store,map);
+				
+		});
+		
+	} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+		
+		var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+			message = 'geolocation을 사용할수 없어요..'
+			
+		displayMarker(locPosition, message);
+
+		//현재위치 먼저 표기하고 가맹점 위치표시 함수 호출
+		storeposition(locPosition);
+	}
+
+	*/
+
+	var lat = 37.3645248, // 위도
+	lon = 126.9613319; // 경도
+
+	var locPosition = new kakao.maps.LatLng(37.3645248,126.9613319), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+	message = '<div style="width:150px;text-align:center;padding:6px 0;">현재위치</div>'; // 인포윈도우에 표시될 내용입니다
+	// 마커와 인포윈도우를 표시합니다
+	displayMarker(locPosition, message,map);
+
+
+	//현재위치 먼저 표기하고 가맹점 위치표시 함수 호출
+	storeposition(lat,lon,selected_store,map);
+
+	// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+	function displayMarker(locPosition, message,map) {
+
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({  
+			map: map, 
+			position: locPosition
+		}); 
+		
+		var iwContent = message, // 인포윈도우에 표시할 내용
+			iwRemoveable = true;
+
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+			content : iwContent,
+			removable : iwRemoveable
+		});
+		
+		// 인포윈도우를 마커위에 표시합니다 
+		infowindow.open(map, marker);
+		//console.log('현재위치'+locPosition)
+		
+		// 지도 중심좌표를 접속위치로 변경합니다
+		map.setCenter(locPosition);
+
+
+		//현재위치 먼저 표기하고 가맹점 위치표시 함수 호출
+		//storeposition(locPosition);
+	}
+}
+
+//가맹점 위치를 map에 표시해줍니다.
+function storeposition(current_y, current_x,selected_store,map){
+
+	
+
+	// 주소-좌표 변환 객체를 생성합니다
+	//console.log('현재위치'+currentposition)
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	var positions = ['경기도 고양시 덕양구 항공대학로 76', '경기도 안양시 동안구 경수대로 430','서울특별시 강남구 봉은사로82길 13']
+	//{% comment %} var store = {{addresses|safe}} {% endcomment %}
+	var store = {{storeINFO|safe}};
+	var j = 0
+	console.log(store)
+	var storeaddress = [];
+	var storename = [];
+	for(var i = 0; i<store.length-1;i++){
+		storename.push(store[i][0])
+		storeaddress.push(store[i][1])
+	}
+	//console.log(storename)
+	//console.log(storeaddress)
+
+	storeaddress.forEach(function(addr,index){
+		geocoder.addressSearch(addr, function(result, status) {
+
+
+
+
+			//현재위치와 가맹점 사이의 거리계산
+			var store_y = result[0].y
+			var store_x = result[0].x
+			var distance = (current_y-store_y)*(current_y-store_y)+(current_x-store_x)*(current_x-store_x)
+			var range
+			console.log(storename[index]+'와의 거리는'+distance)
+			// 정상적으로 검색이 완료됐으면, 그리고 현재위치와의 거리가 0.001이하이면
+			if (selected_store == 0){
+				console.log('Total')
+				range = 50
+			}
+			else {
+				console.log('Registered')
+				range = 0.003
+			}
+			console.log(range)
+			if (status === kakao.maps.services.Status.OK && distance < range) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				// 결과값으로 받은 위치를 마커로 표시합니다
+				var marker = new kakao.maps.Marker({
+					map: map,
+					position: coords,
+					clickable: true
+				});
+
+				// 인포윈도우로 장소에 대한 설명을 표시합니다
+				var infowindow = new kakao.maps.InfoWindow({
+					content: '<div style="width:150px;text-align:center;padding:6px 0;">' +storename[index]+ '</div>',
+					disableAutoPan: true
+				});
+				infowindow.open(map, marker);
+
+				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				//map.setCenter(coords);
+				
+
+				kakao.maps.event.addListener(marker, 'click', function() {
+					// 마커 위에 인포윈도우를 표시합니다
+					console.log('클릭')
+					console.log(store[index])
+					console.log(store[store.length-1])
+					location.href = "http://3.37.202.3/store/detail"+"?store="+store[index]+"&&"+"review="+store[store.length-1];
+					var title = document.getElementsByClassName("on-map-title");
+
+
+					/*
+					var storeinfo=document.getElementsByClassName("storeinfo");
+
+					storename = store[index][0]
+					address = store[index][1]
+					review_score = store[index][2]
+					pick_count = store[index][3]
+					phonenumber = store[index][4]
+					operationtime = store[index][5]
+					category = store[index][6]
+					menu = store[index][7]
+					container_type = store[index][8]
+					parking = store[index][9]
+					if (store[index][10] != null){
+						photo = store[index][10]
+					}
+					title[0].innerHTML = '<p>'+storename+'</p>'
+					storeinfo[0].innerHTML = '<p>'+'가게이름 : '+storename+'</p>' + '<br>'
+											+ '<p>'+'주소 : '+address+'</p>' + '<br>'
+											+ '<p>'+'리뷰점수 : '+review_score+'</p>' + '<br>'
+											+ '<p>'+'방문자수 : '+pick_count+'</p>' + '<br>'
+											+ '<p>'+'전화번호 : '+phonenumber+'</p>' + '<br>'
+											+ '<p>'+'운영시간 : '+operationtime+'</p>' + '<br>'
+											+ '<p>'+'카테고리 : '+category+'</p>' + '<br>'
+											+ '<p>'+'메뉴 : '+menu+'</p>' + '<br>'
+											+ '<p>'+'포장용기 : '+container_type+'</p>' + '<br>'
+											+ '<p>'+'주소 : '+parking+'</p>' + '<br>'
+											//+ '<img src='+photo+'>'+'<br>'
+											+ '<button onclick='+"\"location.href=\'" +'http://127.0.0.1:8000/store/review'+'?storename='+storename+  " \'\" "+'>리뷰쓰기</button >'
+					if(photo!=null){
+						storeinfo[0].innerHTML += '<img src='+photo+'>'+'<br>'
+					}
+
+					var content=document.getElementsByClassName("on-map");
+					if (content[0].style.display === "block") {
+						content[0].style.display = "none";
+					} else {
+						content[0].style.display = "block";
+					}
+					*/
+				});
+			}
+		});
+
+	});
+
+}
+
+ //지도위에 상세페이지 띄우기
+  function onmap(){        
+	console.log("click")
+	var content=document.getElementsByClassName("on-map");
+	if (content[0].style.display === "block") {
+			content[0].style.display = "none";
+		} else {
+			content[0].style.display = "block";
+		}
+	}
+
+</script>

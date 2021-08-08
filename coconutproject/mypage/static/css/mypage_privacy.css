@@ -1,0 +1,57 @@
+:root {
+    /*color*/
+    --mint: #7ad4a9;
+    --brown: #754434;
+    --ivory: #fffff4;
+  
+    /*size*/
+  
+    /*font size*/
+    --title: 25px;
+    --subtitle: 17px;
+    --content: 15px;
+  }
+
+  h3 {
+    font-size: 25px;
+  }
+
+  .privacy-box {
+    text-align: center;
+    margin-left: 300px;
+    margin-top: 50px;
+  }
+
+  .privacy-content h3 {
+    text-align: center;
+    padding-left: 0%;
+    margin: 10px 0 10px 0;
+  }
+
+  .privacy-content input {
+    width: 40vw;
+    height: 3vw;
+    margin: 10px 0 50px 0;
+    border-style: solid;
+    border-radius: 10px;
+  }
+  
+  .privacy-submit {
+    background-color: var(--mint);
+    border-color: var(--ivory);
+    color: var(--ivory);
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 10px;
+    width: 41vw;
+    height: 3.5vw;
+    margin-bottom: 50px;
+  }
+  
+  .privacy-submit:hover {
+    background-color: var(--ivory);
+    border-color: var(--mint);
+    color: var(--mint);
+  }
+  
+  

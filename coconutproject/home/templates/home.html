@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/ssu_h.css' %}"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <title>coconut</title>
+  </head>
+
+  <body class="main">
+    {% include 'navbar_home.html' %}
+    <main>
+      <div class="main-content" id="main1">
+        <div class="main-slogan">
+          <h4>
+            하나의 움직임이 가져다 줄 큰 변화,<span style="color: var(--mint)"
+              >coconut</span
+            >과 함께 하세요!
+          </h4>
+          <h2>
+            <span style="font-size: 30px">약</span>8,270,000<span
+              style="font-size: 30px"
+              >kg</span
+            >
+          </h2>
+        </div>
+      </div>
+      <div class="main-content" id="main2">
+        <h3>CATEGORY</h3>
+        <div class="category-box">
+          <div class="category-content">
+            <h4>STORE CATEGORY</h4>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+          </div>
+          <div class="category-content">
+            <h4>PRODUCT CATEGORY</h4>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+            <button id="">coconuts category</button>
+          </div>
+        </div>
+      </div>
+      <div class="main-content" id="main3">
+        <div class="img-text">
+          <h3>RANKING</h3>
+          <div class="ranking-box">
+            <div class="ranking-cotent">
+              <h4>STORE RANKINGY</h4>
+            </div>
+          </div>
+          <div class="ranking-box">
+            {% comment %}
+            <div class="graph-cotent">
+              <img src="" alt="" />
+            </div>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+      <div class="main-cotent">
+        <h3>COMMUNITY</h3>
+      </div>
+    </main>
+  </body>
+</html>

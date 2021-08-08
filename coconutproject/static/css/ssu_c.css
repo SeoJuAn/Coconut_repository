@@ -1,0 +1,47 @@
+:root {
+  /*color*/
+  --mint: #7ad4a9;
+  --brown: #754434;
+  --ivory: #fffff4;
+
+  /*size*/
+
+  /*font size*/
+  --title: 25px;
+  --subtitle: 17px;
+  --content: 15px;
+}
+
+main {
+  margin: 0 10% 0 10%;
+}
+
+#title {
+  height: 60px;
+  font-size: 35px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+#content {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.write-area {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin: 5% 0 0 0;
+}
+
+.upload-button {
+  background-color: var(--brown);
+  color: #ffffff;
+  height: 50px;
+  width: 100%;
+  margin: 30px 0 0 0;
+  border: none;
+}

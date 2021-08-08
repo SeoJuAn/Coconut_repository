@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'base.html' %}
+        <div class="login">
+            <div class="page-title">
+                <h1 class="mint-font">COCONUT</h1>
+                <h1 class="black-font">LOGIN</h1>
+            </div>
+            <br>
+            <form method = "POST" action="{% url 'login' %}">
+                <div class="submit-login">
+                    {%csrf_token%}
+                    {%if error %}
+                        <p>{{error}}</p> 
+                    {%endif%}
+                        <ul class="login-container">
+                            <li><input class="login-box" name = "id" type="text" placeholder="  아이디"></li>
+                            <li><input class="login-box" name = "password" type="password" placeholder="   비밀번호"></li>
+                        </ul>
+                        <div class="remember">
+                            <select id="department" name="browsers" onchange="selectDepartment()">
+                            <option value="">가입자 정보</option>
+                            <input type="checkbox"/><a class="login-small-font">로그인 정보 기억하기 or 자동로그인</a>
+                        </div>
+                        <br>
+                        <input class="login-submit" type="submit" value="로그인">   
+                </div>
+            </form>
+            <br>
+            <div class="sign-login">
+                <a class="login-small-font" href="signup">회원가입</a>
+                <a class="login-small-font" href="">아이디 찾기</a>
+                <a class="login-small-font" href="">비밀번호 찾기</a>   
+            </div>
+        </div>
+</body>
+</html>
+
+
+    
