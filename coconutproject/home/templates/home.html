@@ -5,34 +5,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/ssu_h.css' %}"
-    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ssu_h.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
     <title>coconut</title>
   </head>
 
-  <body class="main">
+  <body>
     {% include 'navbar_home.html' %}
     <main>
       <div class="main-content" id="main1">
         <div class="main-slogan">
           <h4>
-            하나의 움직임이 가져다 줄 큰 변화,<span style="color: var(--mint)"
-              >coconut</span
-            >과 함께 하세요!
+            하나의 움직임이 가져다 줄 큰 변화&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <span style="color: var(--mint)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COCONUT&nbsp;</span>과 함께 하세요!
           </h4>
-          <h2>
-            <span style="font-size: 30px">약</span>8,270,000<span
-              style="font-size: 30px"
-              >kg</span
-            >
-          </h2>
         </div>
       </div>
-      <div class="main-content" id="main2">
+      <!--<div class="main-content" id="main2">
         <h3>CATEGORY</h3>
         <div class="category-box">
           <div class="category-content">
@@ -67,9 +58,28 @@
             {% endcomment %}
           </div>
         </div>
-      </div>
-      <div class="main-cotent">
-        <h3>COMMUNITY</h3>
+      </div>-->
+      <div class="home_contents">
+        <div class="home_content_title">
+          <a>COCONUT Information & Service</a>
+        </div>
+        <div class="home_contents_container">
+          <div class="home_contents_box">
+            <li class="boxtitle">Zero Waste</li>
+            <li><span class="iconify" data-icon="icon-park-outline:coconut-tree" style="color: #754434;" data-width="150" data-height="150"></span></li>
+            <li class="boxcontent">"코코넛 야자수 같은 사람이 되세요"</li>
+            <li class="hide_boxcontent">"필리핀에서 코코넛 야자수는 버릴 것 하나 없이 마지막까지 쓰이는 소중한 존재이기 때문에 이러한 속담이 존재한다 해요. 하나도 버릴게 없는 삶 , 낭비하지 않는 삶 조금의 노력으로 실천해 보는게 어떨까요?   </li>
+          </div>
+          <div class="home_contents_box">
+            <li class="boxtitle">#용기내 챌린지</li>
+            <li class="boxcontent">용기를 내서 용기에 포장을 해오는 캠패인</li>
+          </div>
+          <div class="home_contents_box">
+            <li class="boxtitle">그린 캠패인 커뮤니티</li>
+            <li><span class="iconify" data-icon="ion:earth-sharp" style="color: #7ad4a9;" data-width="150" data-height="150"></span></li>
+            <li class="boxcontent">나만의 지구를 보호하는 방법들을 공유해봐요.</li>
+          </div>
+        </div>
       </div>
     </main>
   </body>

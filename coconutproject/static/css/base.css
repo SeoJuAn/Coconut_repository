@@ -48,31 +48,48 @@ a {
 h1 {
   display: flex;
   justify-content: center;
-  font-size: 48px;
+  font-size: 2vw;
   font-weight: bold;
   width: 100%;
 }
-
+.main-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--mint);
+  font-size: 18px;
+  font-family: InfinitySans-RegularA1;
+  padding: 0.5% 0;
+  z-index: 1;
+}
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80px;
   background-color: var(--mint);
-  font-size: 20px;
+  font-size: 18px;
   font-family: InfinitySans-RegularA1;
   box-shadow: 0 0 0 3px #cccc ;
+  padding: 0.5% 0;
 }
 
 .nav-item-left-container {
   display: flex;
   justify-content: flex-start;
+  width: 30%;
 }
 
-.nav-logo {
+.main-nav-logo {
+  margin-left: 0.5%;
+  padding: 0;
+}
+
+.main-nav-logo a{
   margin: 0;
   padding: 0;
+  height: 47px;
 }
 
 .nav-logo-img {
@@ -80,7 +97,7 @@ h1 {
   padding: 0;
   width: auto;
   height: 47px;
-  z-index: 2;
+  vertical-align: bottom;
 }
 .nav-item-menu {
   display: flex;
@@ -93,12 +110,56 @@ h1 {
 
 .nav-item-right-container {
   display: flex;
+  justify-content: flex-end;
   list-style: none;
   padding-left: 0;
+  margin-right: 0.5%;
+  width: 60%;
 }
 
 .nav-item-right-container li {
   padding: 10px 20px;
+}
+
+.navbar-tooglebox {
+  display: none;
+  position: absolute;
+  right: 32px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1080px) {
+  .main-nav-container{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-item-left-container{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+  .nav-item-right-container{
+      display: none;
+
+      justify-content: center;
+      align-items: center;
+      width: 100%
+  }
+  .navbar-tooglebox {
+    display: block;
+  }
+
+  .nav-item-right-container.active,
+  .nav-item-left-container.active{
+    display: flex;
+  }
+
 }
 
 /*account*/
@@ -106,11 +167,12 @@ h1 {
 .login {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   margin: 20px 80px;
   font-family: "InfinitySans-RegularA1";
   list-style: none;
-  height: 600px;
+  height: 700px;
 }
 
 .page-title {
@@ -124,20 +186,35 @@ h1 {
   text-align: center;
 }
 
+.signup_page-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: white;
+  margin-top: 40px;
+  margin-bottom: 0;
+  text-align: center;
+}
+form {
+  margin: 0;
+  height: 250px;
+}
 .submit-login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 500px;
-  height: 300px;
+  height: 250px;
 }
 .submit-login p {
   margin: 0 0;
 }
 
 .submit-login a {
-  color: var(--brown);
+  color: black;
 }
 .login-container {
   display: flex;
@@ -196,7 +273,7 @@ h1 {
 }
 select {
   width: 120px;
-  height: 30pxpx;
+  height: 30px;
   font-size: 13px;
   border: 1px 2px;
   border-color: var(--brown);
@@ -235,4 +312,12 @@ select {
   font-size: 20px;
   font-family: InfinitySans-RegularA1;
   position: fixed;
+}
+
+table {
+  width: 100%;
+};
+
+td {
+ margin: 2% 25%;
 }

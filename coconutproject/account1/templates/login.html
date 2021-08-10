@@ -8,16 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
+
     <title>Document</title>
 </head>
 <body>
     {% include 'base.html' %}
         <div class="login">
             <div class="page-title">
-                <h1 class="mint-font">COCONUT</h1>
+                <h1 class="mint-font">COCONUT&nbsp;</h1>
                 <h1 class="black-font">LOGIN</h1>
             </div>
-            <br>
             <form method = "POST" action="{% url 'login' %}">
                 <div class="submit-login">
                     {%csrf_token%}
@@ -28,12 +30,12 @@
                             <li><input class="login-box" name = "id" type="text" placeholder="  아이디"></li>
                             <li><input class="login-box" name = "password" type="password" placeholder="   비밀번호"></li>
                         </ul>
+                        <!--
                         <div class="remember">
                             <select id="department" name="browsers" onchange="selectDepartment()">
                             <option value="">가입자 정보</option>
                             <input type="checkbox"/><a class="login-small-font">로그인 정보 기억하기 or 자동로그인</a>
-                        </div>
-                        <br>
+                        </div>-->
                         <input class="login-submit" type="submit" value="로그인">   
                 </div>
             </form>

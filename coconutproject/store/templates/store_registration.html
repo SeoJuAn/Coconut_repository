@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/Tago.css' %}" type="text/css">
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -26,7 +28,8 @@
                             <div class="picture_box">
                                 <li>사진 추가</li>
                                 <li>
-                                    <input name="photo" type="file" multiple>
+                                    <label class="input-file-button" for="input-file"><span class="iconify" data-icon="bytesize:photo" style="color: #7ad4a9;" data-width="150" data-height="150"></span></label>
+                                    <input name="photo" type="file" multiple id="input-file">
                                 </li>
                             </div>
                         </div>
