@@ -18,6 +18,7 @@ class Customer(models.Model):
     photo = models.CharField(max_length=200, default='')
     sns = models.CharField(max_length=200, default='')
     likestore = models.CharField(max_length=200, default='')
+    likecommunity = models.CharField(max_length=200, default='')
     def __str__(self):
         return self.user_id
 
@@ -32,6 +33,7 @@ class StoreOwner(models.Model):
     phonenumber = models.CharField(max_length=200, default='')
     subdate = models.CharField(max_length=200, default='')
     sns = models.CharField(max_length=200, default='')
+    likecommunity = models.CharField(max_length=200, default='')
     def __str__(self):
         return self.user_id
     

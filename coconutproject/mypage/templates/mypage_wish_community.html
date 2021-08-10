@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/ssu_m.css' %}" type="text/css">
+    <title>my page</title>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="mypage-container">
+        {% include 'mypage.html' %}
+            
+                <div class="review-item" >
+                    <div class="review-top">
+                        <div class="review-storetitle">
+                        </div>
+
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    var review_item=document.getElementsByClassName("review-item");
+    var communitys = {{communitys|safe}}
+    console.log(communitys)
+    for(var i in communitys){
+        writer = communitys[i][0]
+        title = communitys[i][1]
+        content = communitys[i][2]
+        subdate = communitys[i][3]
+
+        var titleDIV = document.createElement("div")
+        titleDIV.innerHTML = "<br><br><h4>"+title+"</h4>"
+        titleDIV.setAttribute("class","review-storetitle")
+
+        /*
+        var buttonDIV = document.createElement("div")
+        buttonDIV.innerHTML = "<button>수정</button>"+"<button>삭제</button>"
+        buttonDIV.setAttribute("class","review-top")
+        */
+        var boxDIV = document.createElement("div")
+        boxDIV.setAttribute("class","review-content")
+
+        var dateDIV = document.createElement("div")
+        dateDIV.innerHTML = "글쓴이 : "+String(writer)+"                "+String(subdate)
+        dateDIV.setAttribute("class","date")
+
+        var contentDIV = document.createElement("div")
+        contentDIV.innerHTML = String(content)
+        contentDIV.setAttribute("class","content")
+
+        boxDIV.appendChild(dateDIV)
+        boxDIV.appendChild(contentDIV)
+
+        review_item[0].appendChild(titleDIV)
+        //review_item[0].appendChild(buttonDIV)
+        review_item[0].appendChild(boxDIV)
+    }
+</script>

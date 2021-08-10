@@ -114,13 +114,33 @@ def mycommunity(request):
     return render(request,'mypage_mycommunity.html',{'communitys':communitys})
 
 def wishcommunity(request):
-    # try:
-    #     customer = Customer.objects.filter(user_id=str(request.user))
-    #     likestores = str(customer[0].likestore).split(',')
-    #     likestores = likestores[1:]
-    #     temp = set(likestores)
-    #     likestores = list(temp)
-    #     print(likestores)
-    # except:
-    #     likestores = []
-    return render(request,'mypage_wish_community.html')
+    try:
+        customer = Customer.objects.filter(user_id=str(request.user))
+        likecommunitys = str(customer[0].likecommunity).split(',')
+        likecommunitys = likecommunitys[1:]
+        temp = set(likecommunitys)
+        likecommunitys = list(temp)
+        print(likecommunitys)
+    except:
+
+        try :
+            storeowner = StoreOwner.objects.filter(user_id=str(request.user))
+            likecommunitys = str(storeowner[0].likecommunity).split(',')
+            likecommunitys = likecommunitys[1:]
+            temp = set(likecommunitys)
+            likecommunitys = list(temp)
+            print(likecommunitys)
+        except:
+            likecommunitys = []
+
+    communitys = []
+    for i in range(len(likecommunitys)):
+        community = Community.objects.get(id = int(likecommunitys[i]))
+        contents = []
+        contents.append(community.writer)
+        contents.append(community.title)
+        contents.append(community.content)
+        contents.append(community.subdate)
+        communitys.append(contents)
+
+    return render(request,'mypage_wish_community.html',{'communitys':communitys})

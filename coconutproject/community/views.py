@@ -2,6 +2,7 @@ from django.core import paginator
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Community
+from account1.models import Customer, StoreOwner
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -35,3 +36,27 @@ def commu_create(request):
 def commu_detail(request, community_id):
     community_detail = Community.objects.get(id = community_id)
     return render(request,'commu_detail.html',{'community':community_detail})
+
+def commu_like(request):
+    if request.method == "POST":
+        customers = Customer.objects.all()
+        storeowners = StoreOwner.objects.all()
+        communityid = request.POST['communityid']
+        print(communityid)
+        #customer.likestore = customer.likestore + "," +str(storeid)
+        for customer in customers:
+            if str(customer) == str(request.user):
+                customer.likecommunity = str(customer.likecommunity) + "," + str(communityid)
+                print(customer.likecommunity)
+                customer.save()
+        for storeowner in storeowners:
+            if str(storeowner) == str(request.user):
+                storeowner.likecommunity = str(storeowner.likecommunity) + "," + str(communityid)
+                print(storeowner.likecommunity)
+                storeowner.save()
+
+        
+        return redirect('/')
+
+    else:
+        return render(request,'commu_detail.html')
