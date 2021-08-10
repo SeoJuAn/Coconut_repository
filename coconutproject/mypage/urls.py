@@ -7,4 +7,6 @@ urlpatterns = [
     path('orderhistory/', views.orderHistory, name = "orderHistory"),
     path('wishstore/', views.wishstore, name = "wishstore"),
     path('changeprivacy/', views.changeprivacy, name = "changeprivacy"),
+    path('mycommunity/', views.mycommunity, name = "mycommunity"),
+    path('wishcommunity/', views.wishcommunity, name = "wishcommunity"),
 ]

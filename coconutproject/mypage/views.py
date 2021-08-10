@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from store.models import Photo_review, Review
 from account1.models import Customer, StoreOwner
+from community.models import Community
 from django.contrib.auth.models import User, update_last_login
 from django.contrib import auth
 
@@ -94,3 +95,32 @@ def changeprivacy(request):
         
     else:
         return render(request,'mypage_privacy.html')
+
+def mycommunity(request):
+
+    community = Community.objects.all()
+    communitys = []
+    for i in range(len(community)):
+        if(str(community[i].writer)==str(request.user)):
+            contents = []
+            contents.append(community[i].writer)
+            contents.append(community[i].title)
+            contents.append(community[i].content)
+            contents.append(community[i].subdate)
+            communitys.append(contents)
+            
+
+
+    return render(request,'mypage_mycommunity.html',{'communitys':communitys})
+
+def wishcommunity(request):
+    # try:
+    #     customer = Customer.objects.filter(user_id=str(request.user))
+    #     likestores = str(customer[0].likestore).split(',')
+    #     likestores = likestores[1:]
+    #     temp = set(likestores)
+    #     likestores = list(temp)
+    #     print(likestores)
+    # except:
+    #     likestores = []
+    return render(request,'mypage_wish_community.html')

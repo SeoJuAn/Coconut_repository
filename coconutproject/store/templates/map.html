@@ -286,7 +286,8 @@ function storeposition(current_y, current_x,selected_store,map){
 					console.log('클릭')
 					console.log(store[index])
 					console.log(store[store.length-1])
-					location.href = "http://3.37.202.3/store/detail"+"?store="+store[index]+"&&"+"review="+store[store.length-1];
+					location.href = "http://127.0.0.1:8000/store/detail"+"?store="+store[index]+"&&"+"review="+store[store.length-1];
+					//http://127.0.0.1:8000
 					var title = document.getElementsByClassName("on-map-title");
 
 
