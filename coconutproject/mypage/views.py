@@ -135,12 +135,15 @@ def wishcommunity(request):
 
     communitys = []
     for i in range(len(likecommunitys)):
-        community = Community.objects.get(id = int(likecommunitys[i]))
-        contents = []
-        contents.append(community.writer)
-        contents.append(community.title)
-        contents.append(community.content)
-        contents.append(community.subdate)
-        communitys.append(contents)
+        try:
+            community = Community.objects.get(id = int(likecommunitys[i]))
+            contents = []
+            contents.append(community.writer)
+            contents.append(community.title)
+            contents.append(community.content)
+            contents.append(community.subdate)
+            communitys.append(contents)
+        except:
+            pass
 
     return render(request,'mypage_wish_community.html',{'communitys':communitys})
