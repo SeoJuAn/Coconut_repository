@@ -143,7 +143,8 @@ def wishcommunity(request):
             contents.append(community.content)
             contents.append(community.subdate)
             communitys.append(contents)
+            print('에러 안남')
         except:
-            pass
-
+            print('에러 남')
+    print(communitys)
     return render(request,'mypage_wish_community.html',{'communitys':communitys})
