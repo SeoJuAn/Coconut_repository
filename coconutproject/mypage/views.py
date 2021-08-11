@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from store.models import Photo_review, Review
+from store.models import Store, Photo_review, Review
 from account1.models import Customer, StoreOwner
+from store.models import Certification
 from community.models import Community
 from django.contrib.auth.models import User, update_last_login
 from django.contrib import auth
@@ -16,7 +17,25 @@ def mypoint(request):
         if(str(customer[i])==str(request.user)):
             point = customer[i].point
 
-    return render(request,'mypoint.html',{'point':point})
+    certification = Certification.objects.all()
+    certification_list = [point]
+    #certification_list.append(point)
+    print('certification list: ',certification_list)
+    for i in range(len(certification)):
+        if(str(certification[i].customer_id) == str(request.user)):
+            list = []
+            list.append(certification[i].customer_point)
+            list.append(certification[i].certification_date)
+            store = Store.objects.filter(user_id=str(certification[i].storeowner_id))
+            print('certification에 저장된 storeowner id: ',certification[i].storeowner_id)
+            print('store 객체: ',str(store[0]))
+            list.append(str(store[0]))  #.storename이 없다고 오류가 뜸
+            print('list: ',list)
+            certification_list.append(list)
+            #certification_list=[누적포인트, [고객 포인트,날짜,가게], ...]
+
+    print('certification list: ',certification_list)
+    return render(request,'mypoint.html',{'certification_list':certification_list})
 
 def mypageReview(request):
     print(request.user)

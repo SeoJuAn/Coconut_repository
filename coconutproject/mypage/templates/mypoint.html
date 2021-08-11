@@ -22,33 +22,33 @@
                 <div class="point_box">
                     <div class="holdingpoints">
                         <li>보유 포인트</li>
-                        <li class="point_number">{{point}} point</li>
+                        <li class="point_number">{{certification_list}} point</li>
                     </div>
                     <div class="point_box_line"></div>
                     <div class="points_earned">
                         <li>적립 환경 포인트</li>
-                        <li class="point_number">{{point}} point</li>
+                        <li id="point" class="point_number">{{certification_list}} point</li>
                     </div>
                 </div>
-                <div class="point_date">
+                {% comment %} <div class="point_date">
                     <li>7월 25일</li>
-                </div>
+                </div> {% endcomment %}
                 <div class="point_contents">
-                    <div class="point_contents_box_en">
+                    {% comment %} <div class="point_contents_box_en">
                         <li class="point_icon"> 
                             <span class="iconify" data-icon="ic:sharp-control-point" data-inline="false" style="color: #7ad4a9;" data-width="60px" data-height="60px"></span>                    
                         </li>
                         <div class="point_contents_detail">
                             <li class="point_contents_date">2021년 7월 25일</li>
                             <li>환경 포인트 적립</li>
-                            <li>알맹 상점</li>
+                            <li class="point_contents_store">알맹 상점</li> 
                         </div>
                         <div class="environment_points">
                             <li>365원</li>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
-                <div class="point_contents">
+                {% comment %} <div class="point_contents">
                     <div class="point_contents_box">
                         <li class="point_icon"> 
                             <span class="iconify" data-icon="ic:sharp-control-point" data-inline="false" style="color: #754434;" data-width="60px" data-height="60px"></span>                    
@@ -62,10 +62,70 @@
                             <li>365원</li>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>
   </body>
 </html>
 
+<script>
+    var certification_list = {{certification_list|safe}};
+    console.log('--mypoint.html-- certification list: ', certification_list);
+    var point_sum = certification_list[0];
+    console.log('누적 포인트: ', point_sum);
+    var point_number = document.getElementsByClassName('point_number');
+    point_number[0].innerHTML = point_sum+' point';
+    var point = document.getElementById('point');
+    point.innerHTML = point_sum+' point';
+
+    {% comment %} certification_list = getParameterByName('certification_list');
+    console.log(certification_list);
+    var point_sum = certification_list[0];
+    console.log(point_sum);
+    var point_number = document.getElementsByClassName('point_number');
+    point_number[0].innerHTML = point_sum+'point'; {% endcomment %}
+
+    var point_contents = document.getElementsByClassName('point_contents');
+    for (var i = 1; i < certification_list.length; i++) {
+        point = certification_list[i][0];
+        date = certification_list[i][1];
+        store = certification_list[i][2];
+
+        var boxDIV = document.createElement("div");
+        boxDIV.setAttribute("class","point_contents_box_en");
+
+        var iconLI = document.createElement("li");
+        iconLI.innerHTML = "<span class='iconify' data-icon='ic:sharp-control-point' data-inline='false' style='color: #7ad4a9;' data-width='60px' data-height='60px'></span>"                    
+        iconLI.setAttribute("class","point_icon");
+
+        var detailDIV = document.createElement("div");
+        detailDIV.setAttribute("class", "point_contents_detail");
+
+        var dateLI = document.createElement("li");
+        dateLI.innerHTML = date;
+        dateLI.setAttribute("class","point_contents_date");
+
+        var pointLI = document.createElement("li");
+        pointLI.innerHTML = "환경 포인트 적립";
+
+        var storeLI = document.createElement("li");
+        storeLI.innerHTML = store;
+        storeLI.setAttribute("class","point_contents_store");
+
+        var pointDIV = document.createElement("div");
+        pointDIV.innerHTML = point + ' point';                   
+        pointDIV.setAttribute("class","environment_points");
+
+        detailDIV.appendChild(dateLI);
+        detailDIV.appendChild(pointLI);
+        detailDIV.appendChild(storeLI);
+
+        boxDIV.appendChild(iconLI);
+        boxDIV.appendChild(detailDIV);
+        boxDIV.appendChild(pointDIV);
+
+        point_contents[0].appendChild(boxDIV);
+    }
+
+</script>

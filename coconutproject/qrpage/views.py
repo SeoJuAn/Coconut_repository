@@ -1,7 +1,8 @@
-from datetime import timezone
+from django.utils import timezone
 from django.http.response import StreamingHttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from account1.models import Customer
+from store.models import Certification
 from django.contrib.auth.models import User
 from django.contrib import auth
 import cv2
@@ -19,7 +20,7 @@ def scan_qr_page(request):
 def scan_qr(request):
     try:
         cam = VideoCamera()
-        return StreamingHttpResponse(gen(cam),content_type="multipart/x-mixed-replace;boundary=frame")
+        return StreamingHttpResponse(gen(cam,str(request.user)),content_type="multipart/x-mixed-replace;boundary=frame")
 
     except:
         pass
@@ -49,7 +50,7 @@ class VideoCamera(object):
             return self.frame;
 
 
-def gen(camera):
+def gen(camera,user):
     i = 0
     while True:
         qr = camera.return_frame()
@@ -68,6 +69,14 @@ def gen(camera):
                     customer.point = customer.point + 10
                     customer.count = customer.count + 1
                     customer.save()
+
+                    certification = Certification()
+                    certification.storeowner_id = user
+                    certification.customer_id = str(customer_user_id)
+                    certification.customer_point = 10
+                    certification.certification_date = timezone.datetime.now()
+                    print('스캔시 certification db 테스트: ',certification)
+                    certification.save()
                     # print('customer1 : '+customer1)
                     break
             if i == 1:

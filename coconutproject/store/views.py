@@ -84,7 +84,7 @@ def store_registration(request):
         #photo = request.POST['photo']
 
         store = Store()
-        #store.user_id = 
+        store.user_id = request.user
         #store.store_num = 
         store.point = 0
         store.count = 0
