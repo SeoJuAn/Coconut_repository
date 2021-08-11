@@ -9,5 +9,4 @@ urlpatterns = [
     path('changeprivacy/', views.changeprivacy, name = "changeprivacy"),
     path('mycommunity/', views.mycommunity, name = "mycommunity"),
     path('wishcommunity/', views.wishcommunity, name = "wishcommunity"),
-    path('test/', views.test, name = "test"),
 ]

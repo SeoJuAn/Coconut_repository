@@ -17,13 +17,13 @@
     {% include 'base.html'%}
     <main>
       <div class="detail-top">
-      {% comment %} <form method = "POST" action="{%url 'commu_like' %}">
+      <form method = "POST" action="{%url 'commu_like' %}">
           {%csrf_token%}
           <div class="cmd">
               <input type="hidden" class="communityid" id="communityid" name="communityid" value={{community.id}}>
               <input type="submit" name="save" id="save" value="좋아요" class="cmd_submit">
           </div>
-      </form> {% endcomment %}
+      </form>
         <div class="detail-title">
           <h3>{{community.title}}</h3>
           <h4>{{community.writer}}</h4>
