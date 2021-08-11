@@ -23,16 +23,16 @@ def mypoint(request):
     print('certification list: ',certification_list)
     for i in range(len(certification)):
         if(str(certification[i].customer_id) == str(request.user)):
-            list = []
-            list.append(certification[i].customer_point)
-            list.append(certification[i].certification_date)
-            store = Store.objects.filter(user_id=str(certification[i].storeowner_id))
-            print('certification에 저장된 storeowner id: ',certification[i].storeowner_id)
-            print('store 객체: ',str(store[0]))
-            list.append(str(store[0]))  #.storename이 없다고 오류가 뜸
-            print('list: ',list)
-            certification_list.append(list)
-            #certification_list=[누적포인트, [고객 포인트,날짜,가게], ...]
+            try :
+                list = []
+                list.append(certification[i].customer_point)
+                list.append(certification[i].certification_date)
+                store = Store.objects.filter(user_id=str(certification[i].storeowner_id))
+                list.append(str(store[0]))  #.storename이 없다고 오류가 뜸
+                certification_list.append(list)
+                #certification_list=[누적포인트, [고객 포인트,날짜,가게], ...]
+            except:
+                certification_list = [point]
 
     print('certification list: ',certification_list)
     return render(request,'mypoint.html',{'certification_list':certification_list})
