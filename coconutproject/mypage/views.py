@@ -144,3 +144,7 @@ def wishcommunity(request):
         communitys.append(contents)
 
     return render(request,'mypage_wish_community.html',{'communitys':communitys})
+
+def test(request):
+    communitys = [['a','a','a','a',],['a','a','a','a',],['a','a','a','a',]]
+    return render(request,'mypage_mycommunity.html',{'communitys':communitys})
