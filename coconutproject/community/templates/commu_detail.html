@@ -17,13 +17,27 @@
     {% include 'base.html'%}
     <main>
       <div class="detail-top">
-      <form method = "POST" action="{%url 'commu_like' %}">
+        <form method="POST" action="{%url 'commu_like' %}">
           {%csrf_token%}
           <div class="cmd">
-              <input type="hidden" class="communityid" id="communityid" name="communityid" value={{community.id}}>
-              <input type="submit" name="save" id="save" value="좋아요" class="cmd_submit">
+            
+            <input
+              type="hidden"
+              class="communityid"
+              id="communityid"
+              name="communityid"
+              value="{{community.id}}"
+            />
+            <img src="/static/img/Heart.png" alt="" class="like">
+            <input
+              type="submit"
+              name="save"
+              id="save"
+              value="좋아요"
+              class="cmd_submit"
+            />
           </div>
-      </form>
+        </form>
         <div class="detail-title">
           <h3>{{community.title}}</h3>
           <h4>{{community.writer}}</h4>

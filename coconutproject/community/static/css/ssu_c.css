@@ -74,3 +74,20 @@ h4 {
 .detail-top h3 {
   margin-right: 25px;
 }
+
+.like {
+  height: 100%;
+  color: #ffffff;
+}
+
+.cmd input {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  height: 100%;
+}
+.cmd {
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
