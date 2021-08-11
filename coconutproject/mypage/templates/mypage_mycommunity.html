@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/ssu_m.css' %}" type="text/css">
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
     <title>my page</title>
 </head>
 <body>
     {% include 'base.html' %}
     <div class="mypage-container">
         {% include 'mypage.html' %}
-            
+            <div class="mypage_right_container">
                 <div class="review-item" >
                     <div class="review-top">
                         <div class="review-storetitle">
@@ -22,7 +24,7 @@
 
                     </div>
                 </div>
-            
+            </div>
         </div>
     </div>
 </body>
