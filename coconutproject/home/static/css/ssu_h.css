@@ -14,7 +14,7 @@
 
 h4 {
   font-size: 40px;
-  color: var(--ivory);
+  color: white;
 }
 h3 {
   font-size: 50px;
@@ -30,7 +30,7 @@ h2 {
 }
 
 .main-content {
-  height: 350px;
+  height: 600px;
   width: 100vw;
   padding-top: 30px;
 }
@@ -45,7 +45,7 @@ h2 {
 .main-slogan {
   display: flex;
   justify-content: center;
-  color: var(--ivory);
+  color: white;
 }
 .category-box {
   display: inline-block;
@@ -96,6 +96,7 @@ h2 {
   flex-direction: column;
   width: 100%;
   margin: 2% 0%;
+  background-color: white;
 }
 
 .home_content_title {
@@ -130,7 +131,7 @@ h2 {
   height: 50vh;
   margin: 0 2%;
   float: left;
-  background-color: var(--ivory);
+  background-color: white;
   z-index: 3;
   justify-content: center;
   flex-direction: column;

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,7 +17,7 @@
   </head>
   <body>
     {% include 'base.html'%}
-    <main>
+    <div class="main_detail">
       <div class="detail-top">
         <form method="POST" action="{%url 'commu_like' %}">
           {%csrf_token%}
@@ -42,9 +44,13 @@
           <h3>{{community.title}}</h3>
           <h4>{{community.writer}}</h4>
         </div>
-        <p>{{community.subdate}}</p>
       </div>
-      <p>{{community.content}}</p>
-    </main>
+      <div class="community_detail_content">
+        <div class="community_date">
+          <p>{{community.subdate}}</p>
+        </div>
+        <p>{{community.content}}</p>
+      </div>
+    </div>
   </body>
 </html>

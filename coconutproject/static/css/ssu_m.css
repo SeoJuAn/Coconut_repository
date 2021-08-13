@@ -13,17 +13,18 @@ h4 {
   display: block;
   background-color: #f9f9f9;
   text-align: center;
-  width: 100%;
+  width: 80%;
   height: 15vw;
   border-style: solid;
   border-color: #cccccc;
   border-width: 1.5px;
+  margin-top: 2%;
 }
 
 .mini-nav {
   display: flex;
-  flex-wrap: nowrap;
-  width: 80vw;
+  justify-content: center;
+  width: 80%;
 }
 
 .mini-nav-item {
@@ -42,12 +43,12 @@ h4 {
 
 .written-container {
   margin-top: 40px;
-  width: 80vw;
+  width: 80%;
   display: none;
 }
 .review-item {
-  width: 100%;
-  margin: 0;
+  width: 90%;
+  margin: 1% 5%;
 }
 
 .review-top {
@@ -83,9 +84,9 @@ h4 {
   color: #cccccc;
 }
 
-.new-review-container {
+#write.new-review-container {
   margin-top: 40px;
-  width: 80vw;
+  width: 800px;
 }
 .new-review-item {
   display: flex;
@@ -112,5 +113,6 @@ h4 {
   flex-grow: -0.5;
 }
 .view {
+  width: 50%;
   flex-grow: 1;
 }

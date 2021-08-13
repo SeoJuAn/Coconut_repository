@@ -7,48 +7,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
     <title> community main </title>
 </head>
 <body>
     {% include 'base.html'%}
     <div class="main">
-        <h1>Community</h1>
-        <div class = "button">
-            <button onclick=location.href="{%url 'commu_create'%}">글쓰기</button>
-            <br>
-        </div>
+        <div class="community_main">
+            <div class="community_main_title">
+                <h1>Community</h1>
+            </div>
+            <table class = "community_main_container">
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+                <th>
+                    <div class = "button">
+                    <button onclick=location.href="{%url 'commu_create'%}">글쓰기</button>
+                </th>
+                {% for community in posts %}
+                <tr>
+                    <td>{{community.title}}</td>
+                    <td>{{community.writer}}</td>
+                    <td>{{community.subdate}}</td>
+                    <td><button onclick=location.href="{%url 'commu_detail' community.id%}">자세히보기</button></td>
 
-        <div class = "content">
-            <span>제목</span>&nbsp&nbsp&nbsp
-            <span>작성자</span>&nbsp&nbsp&nbsp
-            <span>날짜</span>
-            <br>
-            <br>
-            
-            {% for community in posts %}
-                <span><a href = "{% url 'commu_detail' community.id%}">{{community.title}}</a></span>&nbsp&nbsp&nbsp
-                <span>{{community.writer}}</span>&nbsp&nbsp&nbsp
-                <span>{{community.subdate}}</span>
+                </tr>
+                    {% comment %} <a href = "{% url 'detail' blog.id%}">...more</a></p> {% endcomment %}
+                {% endfor %}
+            </table>
+            <div class="community_main_numbering">
+                {% if posts.has_previous%}
+                <br>
+                    <a href="?page=1">First</a>
+                    <a href="?page={{posts.previous_page_number}}">Previous</a>
+                    <br>
+                {% endif %}
+                <br>
+                <span>{{posts.number}} of {{posts.paginator.num_pages}}</span>
+
+                {%if posts.has_next%}
+                    <br>
+                    <br>
+                    <a href="?page={{posts.next_page_number}}">Next</a>
+                    <a href="?page={{posts.paginator.num_pages}}">Last</a>
+                    <br>
+                {%endif%}
+            </div>
                 
-                <br>
-                <br>
-                {% comment %} <a href = "{% url 'detail' blog.id%}">...more</a></p> {% endcomment %}
-            {% endfor %}
-
-            {% if posts.has_previous%}
-                <a href="?page=1">First</a>
-                <a href="?page={{posts.previous_page_number}}">Previous</a>
-            {% endif %}
-
-            <span>{{posts.number}}</span>
-            <span>of</span>
-            <span>{{posts.paginator.num_pages}}</span>
-
-            {%if posts.has_next%}
-                <a href="?page={{posts.next_page_number}}">Next</a>
-                <a href="?page={{posts.paginator.num_pages}}">Last</a>
-            {%endif%}
         </div>
     </div>
+
 </body>
 </html> 
