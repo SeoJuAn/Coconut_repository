@@ -14,7 +14,7 @@ class Customer(models.Model):
     subdate = models.CharField(max_length=200, default='')
     age = models.IntegerField(default=0)
     gender = models.CharField(max_length=200, default='')
-    coupon = models.IntegerField(default=0)
+    coupon = models.CharField(max_length=200, default='')
     photo = models.CharField(max_length=200, default='')
     sns = models.CharField(max_length=200, default='')
     likestore = models.CharField(max_length=200, default='')

@@ -9,4 +9,6 @@ urlpatterns = [
     path('changeprivacy/', views.changeprivacy, name = "changeprivacy"),
     path('mycommunity/', views.mycommunity, name = "mycommunity"),
     path('wishcommunity/', views.wishcommunity, name = "wishcommunity"),
+    path('purchasecoupon/', views.purchasecoupon, name = "purchasecoupon"),
+    path('mycoupon/', views.mycoupon, name = "mycoupon"),
 ]

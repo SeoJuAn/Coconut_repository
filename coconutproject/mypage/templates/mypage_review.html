@@ -21,16 +21,20 @@
                 <p>현재 진행 중인 주문이 없습니다.</p>
             </div>
             <div class="mini-nav">
-                <div class="mini-nav-item">
+                {% comment %} <div class="mini-nav-item">
                     <button onclick="writeReview()">리뷰 작성</button>
-                </div>
-                <div class="mini-nav-item">
+                </div> {% endcomment %}
+                {% comment %} <div class="mini-nav-item">
                     <button onclick="written()">작성한 리뷰</button>
-                </div>
+                </div> {% endcomment %}
             </div>
-            <div class="written-container" id="written">
+            
+            {% comment %} <div class="written-container" id="written"> {% endcomment %}
+                
                 <div class="review-item" >
+                
                     <div class="review-top">
+                    
                         <div class="review-storetitle">
                             {% comment %} <img src="../static/img/빙수.jpg" alt=""> {% endcomment %}
                             {% comment %} <h4>알맹 상점 코코넛조림</h4> {% endcomment %}
@@ -47,9 +51,9 @@
                         <p class="content">상품평 내용</p>
                     </div> {% endcomment %}
                 </div>
-            </div>
+            {% comment %} </div> {% endcomment %}
             
-            <!--<div class="new-review-conatainer" id="write">
+            {% comment %} <div class="new-review-conatainer" id="write">
                 <div class="new-review-item">
                     <img src="../static/img/빙수.jpg" alt="">
                     <div class="view">
@@ -59,7 +63,8 @@
                     </div>
                     <button >리뷰작성</button>
                 </div>
-            </div>-->
+            </div> {% endcomment %}
+
         </div>
     </div>
 </body>
@@ -88,6 +93,7 @@
     
     var review_item=document.getElementsByClassName("review-item");
     var reviews = {{reviews|safe}}
+    console.log(reviews)
     for(var i in reviews){
         store = reviews[i][0]
         date = reviews[i][1]

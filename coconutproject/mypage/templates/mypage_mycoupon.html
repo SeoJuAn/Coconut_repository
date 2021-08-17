@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/Tago_mypage.css' %}" type="text/css">
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+    <script src="/static/js/Tago_navbar.js" defer></script>
+
+    <title>coconut</title>
+  </head>
+
+  <body class="main">
+    {% include 'base.html' %}
+        <div class="mypage-container">
+            {% include 'mypage.html' %}
+        <div>
+
+        <h1>mycoupon page</h1>
+        <br>
+        <br>
+        <p>{{coupon}}</p>
+    
+  </body>
+</html>
+
+<script>
+</script>

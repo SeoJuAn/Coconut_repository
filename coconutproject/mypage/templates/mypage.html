@@ -28,4 +28,14 @@
       <a href="{% url 'wishcommunity' %}">좋아요한 글 목록</a>
     </li>
   </div>
+  <div class="my_community_container">
+    <li class="my_community_title">my coupon</li>
+    <li class="my_community_contents">
+      <a href="{% url 'purchasecoupon' %}">쿠폰 구매하기</a>
+      </li>
+    {% comment %} <li class="my_community_contents">나의 댓글 관리</li> {% endcomment %}
+    <li class="my_community_contents">
+      <a href="{% url 'mycoupon' %}">쿠폰 사용하기</a>
+    </li>
+  </div>
 </div>

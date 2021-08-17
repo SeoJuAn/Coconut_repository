@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from store.models import Store, Photo_review, Review
 from account1.models import Customer, StoreOwner
 from store.models import Certification
@@ -30,7 +30,7 @@ def mypoint(request):
                 store = Store.objects.filter(user_id=str(certification[i].storeowner_id))
                 list.append(str(store[0]))  #.storename이 없다고 오류가 뜸
                 certification_list.append(list)
-                #certification_list=[누적포인트, [고객 포인트,날짜,가게], ...]
+                    #certification_list=[누적포인트, [고객 포인트,날짜,가게], ...]
             except:
                 certification_list = [point]
 
@@ -167,3 +167,46 @@ def wishcommunity(request):
             print('에러 남')
     print(communitys)
     return render(request,'mypage_wish_community.html',{'communitys':communitys})
+
+def purchasecoupon(request):
+    if request.method == "POST":
+        customer = get_object_or_404(Customer,user_id = str(request.user))
+        choice = request.POST['choice']
+        # 사용자가 customer를 선택했다면
+        if choice == "5":
+            print(choice)
+            customer.coupon += "5,"
+            customer.point -= 5
+            customer.save()
+
+        # 사용자가 storeowner를 선택했다면
+        elif choice == "10":
+            print(choice)
+            customer.coupon += "10,"
+            customer.point -= 10
+            customer.save()
+
+        elif choice == "15":
+            print(choice)
+            customer.coupon += "15,"
+            customer.point -= 15
+            customer.save()
+
+        elif choice == "20":
+            print(choice)
+            customer.coupon += "20,"
+            customer.point -= 20
+            customer.save()
+
+        customer = get_object_or_404(Customer,user_id = str(request.user))
+        coupon = customer.coupon.split(',')
+        return render(request,'mypage_mycoupon.html',{'coupon':coupon})
+
+    else:
+        return render(request,'mypage_purchase_coupon.html')
+    
+
+def mycoupon(request):
+    customer = get_object_or_404(Customer,user_id = str(request.user))
+    coupon = customer.coupon.split(',')
+    return render(request, 'mypage_mycoupon.html',{'coupon':coupon})

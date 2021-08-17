@@ -66,14 +66,14 @@ def gen(camera,user):
                     print('finish')
                     i=1
                     customer = get_object_or_404(Customer,user_id = str(customer_user_id))
-                    customer.point = customer.point + 10
+                    customer.point = customer.point + 1
                     customer.count = customer.count + 1
                     customer.save()
 
                     certification = Certification()
                     certification.storeowner_id = user
                     certification.customer_id = str(customer_user_id)
-                    certification.customer_point = 10
+                    certification.customer_point = 1
                     certification.certification_date = timezone.datetime.now()
                     print('스캔시 certification db 테스트: ',certification)
                     certification.save()

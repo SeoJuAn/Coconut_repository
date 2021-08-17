@@ -21,12 +21,12 @@
             <div class="mypage_right_container">
                 <div class="point_box">
                     <div class="holdingpoints">
-                        <li>보유 포인트</li>
+                        <li>보유 코코넛</li>
                         <li class="point_number">{{certification_list}} point</li>
                     </div>
                     <div class="point_box_line"></div>
                     <div class="points_earned">
-                        <li>적립 환경 포인트</li>
+                        <li>적립 환경 코코넛</li>
                         <li id="point" class="point_number">{{certification_list}} point</li>
                     </div>
                 </div>
@@ -75,9 +75,9 @@
     var point_sum = certification_list[0];
     console.log('누적 포인트: ', point_sum);
     var point_number = document.getElementsByClassName('point_number');
-    point_number[0].innerHTML = point_sum+' point';
+    point_number[0].innerHTML = point_sum+' coconut';
     var point = document.getElementById('point');
-    point.innerHTML = point_sum+' point';
+    point.innerHTML = point_sum+' coconut';
 
     {% comment %} certification_list = getParameterByName('certification_list');
     console.log(certification_list);
@@ -114,7 +114,7 @@
         storeLI.setAttribute("class","point_contents_store");
 
         var pointDIV = document.createElement("div");
-        pointDIV.innerHTML = point + ' point';                   
+        pointDIV.innerHTML = point + 'coconut';                   
         pointDIV.setAttribute("class","environment_points");
 
         detailDIV.appendChild(dateLI);
