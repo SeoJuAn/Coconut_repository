@@ -8,3 +8,7 @@ class Community(models.Model):
     subdate = models.CharField(max_length=200, default='')
     def __str__(self):
         return self.title
+
+class Photo(models.Model):
+    community = models.ForeignKey(Community,on_delete=models.CASCADE,null=True)
+    image = models.ImageField(upload_to='images/',blank=True,null=True)

@@ -54,3 +54,17 @@
     </div>
   </body>
 </html>
+
+<script>
+  var communityPictures = document.getElementsByClassName("community_detail_content");
+  photos = {{photos|safe}}
+  for(i in photos){
+    console.log(photos[i])
+    
+    var photoDIV = document.createElement("div")
+    photoDIV.innerHTML = "<img src="+photos[i]+" height='180' width='180'"+">"+"&nbsp;&nbsp;"
+    photoDIV.setAttribute("class","detail_community_photo")
+    communityPictures[0].appendChild(photoDIV)
+    
+  }
+</script>

@@ -17,13 +17,22 @@
         <!-- <div class="content"></div>
         <h1>글쓰기</h1> -->
         <div class="write-container">
-          <form method="POST" action="{%url 'commu_create' %}">
+          <form method="POST" action="{%url 'commu_create' %}" enctype="multipart/form-data">
             {%csrf_token%} 
             <!-- <input type="text" name="title" cols="40" />-->
             <div class="write-area">
                 <input type="text" id="title" name="title" cols="70" rows="1" placeholder="title"></input>
                 <hr>
                 <textarea id="content" name="content" cols="70" rows="20" placeholder="content"></textarea>
+            </div>
+            <div class="regist_picture">
+                <div class="picture_box">
+                    <li>사진 추가</li>
+                    <li>
+                        <label class="input-file-button" for="input-file"><span class="iconify" data-icon="bytesize:photo" style="color: #7ad4a9;" data-width="150" data-height="150"></span></label>
+                        <input name="photo" type="file" multiple id="input-file">
+                    </li>
+                </div>
             </div>
             <input class="upload-button" type="submit" value="업로드" />
           </form>

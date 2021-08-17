@@ -1,7 +1,7 @@
 from django.core import paginator
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Community
+from .models import Community, Photo
 from account1.models import Customer, StoreOwner
 from django.core.paginator import Paginator
 
@@ -28,6 +28,12 @@ def commu_create(request):
         community.writer = writer
         community.subdate = date
         community.save()
+
+        for img in request.FILES.getlist('photo'):
+            photo = Photo()
+            photo.community = community
+            photo.image = img
+            photo.save()
             
         return redirect('/')
     else:
@@ -35,7 +41,16 @@ def commu_create(request):
 
 def commu_detail(request, community_id):
     community_detail = Community.objects.get(id = community_id)
-    return render(request,'commu_detail.html',{'community':community_detail})
+    photo = Photo.objects.all()
+    photos = []
+
+    for i in range(len(photo)):
+            #print(str(photo[j].store))
+            if str(photo[i].community.id) == str(community_id) :
+                print(photo[i].image.url)
+                photos.append(photo[i].image.url)
+
+    return render(request,'commu_detail.html',{'community':community_detail, 'photos':photos})
 
 def commu_like(request):
     if request.method == "POST":
