@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ssu_c.css' %}" />
     <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <script src="/static/js/Tago_navbar.js" defer></script>
     <title> community main </title>
@@ -18,7 +19,7 @@
             <div class="community_main_title">
                 <h1>Community</h1>
             </div>
-            <table class = "community_main_container">
+            <!-- <table class = "community_main_container">
                 <th>제목</th>
                 <th>작성자</th>
                 <th>날짜</th>
@@ -54,6 +55,23 @@
                     <a href="?page={{posts.paginator.num_pages}}">Last</a>
                     <br>
                 {%endif%}
+            </div> -->
+
+            <div class="community-list">
+                {% for community in posts %}
+                <a href="{%url 'commu_detail' community.id%}" class="">
+                    <div class="community-item" >
+                        <img src="/static/img/main2.jpg" alt="">
+                        <div class="community-info">
+                            <div class="community-info-content">
+                                <h5>{{community.title}}</h5>
+                                <h6>{{community.writer}}</h6>
+                                <h6>{{community.subdate}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
                 
         </div>

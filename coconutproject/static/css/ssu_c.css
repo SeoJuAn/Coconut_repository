@@ -109,3 +109,21 @@ h4 {
   display: flex;
   justify-content: flex-end;
 }
+
+/***community ***/
+
+.community-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.community-list a {
+  width: 23%;
+}
+.community-item {
+  background-color: var(--ivory);
+  width: 100%;
+  margin: 10px 0 10px;
+}
