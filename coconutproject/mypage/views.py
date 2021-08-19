@@ -209,4 +209,26 @@ def purchasecoupon(request):
 def mycoupon(request):
     customer = get_object_or_404(Customer,user_id = str(request.user))
     coupon = customer.coupon.split(',')
-    return render(request, 'mypage_mycoupon.html',{'coupon':coupon})
+
+    if request.method == "POST":
+        print("사용하기 누름")
+        choice = request.POST[name]
+        print(choice)
+        for i in coupon:
+            if (coupon[i] == choice):
+                del coupon[i]
+                break
+        
+        string = ""
+        for i in coupon:
+            string += coupon[i] + ","
+
+        customer.coupon = string
+        customer.save()
+
+        return render(request, 'mypage_mycoupon.html', {'coupon':coupon})
+
+    else:    
+        customer = get_object_or_404(Customer,user_id = str(request.user))
+        coupon = customer.coupon.split(',')
+        return render(request, 'mypage_mycoupon.html',{'coupon':coupon})

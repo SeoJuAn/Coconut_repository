@@ -23,10 +23,35 @@
         <h1>mycoupon page</h1>
         <br>
         <br>
-        <p>{{coupon}}</p>
+        {% comment %} <p>{{coupon}}</p> {% endcomment %}
+
     
+        <div class="coupon_contents">
+          <form method="POST" action="{% url 'mycoupon' %}">
+          {% csrf_token %}
+          </form>
+        </div>
+
+       
+
   </body>
 </html>
 
 <script>
+  var coupon = {{coupon|safe}};
+  console.log('coupon list: ', coupon);
+
+  var coupon_contents = document.getElementsByClassName('coupon_contents');
+  for (var i = 0; i < coupon.length - 1; i++) {
+    var couponDIV = document.createElement("div");
+    couponDIV.innerHTML = coupon[i] + "% 할인권"
+    coupon_contents[0].appendChild(couponDIV);
+
+    var buttonINPUT = document.createElement("input");
+    buttonINPUT.setAttribute("type", "submit");
+    buttonINPUT.setAttribute("name", coupon[i]);
+    buttonINPUT.setAttribute("value", "사용하기");
+    coupon_contents[0].appendChild(buttonINPUT);
+  }
+
 </script>
