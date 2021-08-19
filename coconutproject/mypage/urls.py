@@ -11,4 +11,6 @@ urlpatterns = [
     path('wishcommunity/', views.wishcommunity, name = "wishcommunity"),
     path('purchasecoupon/', views.purchasecoupon, name = "purchasecoupon"),
     path('mycoupon/', views.mycoupon, name = "mycoupon"),
+    #path('<int:index>/', views.usecoupon, name = "usecoupon"),
+    path('usecoupon/', views.usecoupon, name = "usecoupon"),
 ]

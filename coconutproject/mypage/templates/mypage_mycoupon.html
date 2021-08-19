@@ -24,34 +24,32 @@
         <br>
         <br>
         {% comment %} <p>{{coupon}}</p> {% endcomment %}
-
-    
-        <div class="coupon_contents">
-          <form method="POST" action="{% url 'mycoupon' %}">
-          {% csrf_token %}
-          </form>
+        <div class = "mycoupon-conatainer">
+            {% comment %} <button onclick=location.href="{%url 'usecoupon' 1%}">사용하기</button> {% endcomment %}
         </div>
-
-       
-
+    
   </body>
 </html>
 
 <script>
-  var coupon = {{coupon|safe}};
-  console.log('coupon list: ', coupon);
+    coupon = {{coupon|safe}}
+    var container = document.getElementsByClassName("mycoupon-conatainer")
+    for(var i=0; i<coupon.length -1 ;i++){
+        var boxDIV = document.createElement("div")
+        boxDIV.setAttribute("class","review-content")
+        
+        var contentDIV = document.createElement("div")
+        contentDIV.innerHTML = "<p>"+String(coupon[i]) + "% 할인 쿠폰"+"</p>"
+        contentDIV.setAttribute("class","content")
 
-  var coupon_contents = document.getElementsByClassName('coupon_contents');
-  for (var i = 0; i < coupon.length - 1; i++) {
-    var couponDIV = document.createElement("div");
-    couponDIV.innerHTML = coupon[i] + "% 할인권"
-    coupon_contents[0].appendChild(couponDIV);
+        
+        var buttonDIV = document.createElement("div")
+        buttonDIV.innerHTML = '<button onclick='+"\"location.href= \'" +'http://127.0.0.1:8000/mypage/usecoupon'+'?index='+i+  " \'\" "+'>사용하기</button ><br>';
+        buttonDIV.setAttribute("class","button")
+        
 
-    var buttonINPUT = document.createElement("input");
-    buttonINPUT.setAttribute("type", "submit");
-    buttonINPUT.setAttribute("name", coupon[i]);
-    buttonINPUT.setAttribute("value", "사용하기");
-    coupon_contents[0].appendChild(buttonINPUT);
-  }
-
+        boxDIV.appendChild(contentDIV)
+        boxDIV.appendChild(buttonDIV)
+        container[0].appendChild(boxDIV)
+    }
 </script>

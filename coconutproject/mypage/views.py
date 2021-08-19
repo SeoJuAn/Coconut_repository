@@ -183,19 +183,19 @@ def purchasecoupon(request):
         elif choice == "10":
             print(choice)
             customer.coupon += "10,"
-            customer.point -= 10
+            customer.point -= 8
             customer.save()
 
         elif choice == "15":
             print(choice)
             customer.coupon += "15,"
-            customer.point -= 15
+            customer.point -= 12
             customer.save()
 
         elif choice == "20":
             print(choice)
             customer.coupon += "20,"
-            customer.point -= 20
+            customer.point -= 15
             customer.save()
 
         customer = get_object_or_404(Customer,user_id = str(request.user))
@@ -209,26 +209,32 @@ def purchasecoupon(request):
 def mycoupon(request):
     customer = get_object_or_404(Customer,user_id = str(request.user))
     coupon = customer.coupon.split(',')
+    return render(request, 'mypage_mycoupon.html',{'coupon':coupon})
 
-    if request.method == "POST":
-        print("사용하기 누름")
-        choice = request.POST[name]
-        print(choice)
-        for i in coupon:
-            if (coupon[i] == choice):
-                del coupon[i]
-                break
-        
-        string = ""
-        for i in coupon:
-            string += coupon[i] + ","
 
-        customer.coupon = string
-        customer.save()
+def usecoupon(request):
+    #print(request.GET.get('index'))
+    remove_index = int(request.GET.get('index'))
+    customer = get_object_or_404(Customer,user_id = str(request.user))
+    coupon = customer.coupon.split(',')
+    del coupon[remove_index]
 
-        return render(request, 'mypage_mycoupon.html', {'coupon':coupon})
+    for i in coupon:
+        if "" in coupon:
+            coupon.remove("")
 
-    else:    
-        customer = get_object_or_404(Customer,user_id = str(request.user))
-        coupon = customer.coupon.split(',')
-        return render(request, 'mypage_mycoupon.html',{'coupon':coupon})
+
+
+    db_coupon = ""
+
+    for i in coupon:
+        print(i)
+        db_coupon += str(i)+","
+
+
+    customer.coupon = db_coupon
+    customer.save()
+
+    change_coupon = db_coupon.split(',')
+
+    return render(request,'mypage_mycoupon.html',{'coupon':change_coupon})
