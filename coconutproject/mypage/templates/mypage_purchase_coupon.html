@@ -23,29 +23,30 @@
                 <h1>쿠폰 구매하기</h1>
                 <h2>코코넛으로 구매할 쿠폰을 선택해주세요</h2>
             </div> {% endcomment %}
+            <div class="mypage_right_container">
+              <div class="content-box">
+                  <form method="POST" action="{%url 'purchasecoupon' %}">
+                  {%csrf_token%}
+                  <br>
+                  <br>
+                  <h1>쿠폰 구매하기</h1>
+                  <h2>코코넛으로 구매할 쿠폰을 선택해주세요</h2>
+                  <h3>쿠폰 종류</h3>
+                  <div class="choice-box">
+                      <input type="radio" id="5" name="choice" value="5" />
+                      <label for="customer">5% 할인권(5coconut)</label><br />
+                      <input type="radio" id="10" name="choice" value="10" />
+                      <label for="storeowner">10% 할인권(8coconut)</label><br />
+                      <input type="radio" id="15" name="choice" value="15" />
+                      <label for="storeowner">15% 할인권(12coconut)</label><br />
+                      <input type="radio" id="20" name="choice" value="20" />
+                      <label for="storeowner">20% 할인권(15coconut)</label><br />
 
-            <div class="content-box">
-                <form method="POST" action="{%url 'purchasecoupon' %}">
-                {%csrf_token%}
-                <br>
-                <br>
-                <h1>쿠폰 구매하기</h1>
-                <h2>코코넛으로 구매할 쿠폰을 선택해주세요</h2>
-                <h3>쿠폰 종류</h3>
-                <div class="choice-box">
-                    <input type="radio" id="5" name="choice" value="5" />
-                    <label for="customer">5% 할인권(5coconut)</label><br />
-                    <input type="radio" id="10" name="choice" value="10" />
-                    <label for="storeowner">10% 할인권(8coconut)</label><br />
-                    <input type="radio" id="15" name="choice" value="15" />
-                    <label for="storeowner">15% 할인권(12coconut)</label><br />
-                    <input type="radio" id="20" name="choice" value="20" />
-                    <label for="storeowner">20% 할인권(15coconut)</label><br />
-
-                </div>
-                <br />
-                <input type="submit" class="signup-submit" value="구매하기" />
-            </form>
+                  </div>
+                  <br />
+                  <input type="submit" class="signup-submit" value="구매하기" />
+              </form>
+              </div>
             </div>
 
         <div>

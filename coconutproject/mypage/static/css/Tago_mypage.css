@@ -380,3 +380,29 @@ li {
   width: 100%;
 }
 
+.mycoupon-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review-content {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+  align-items: center;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #666464;
+  margin: 1% 2.2%;
+  border-radius: 3px;
+}
+
+.review-content p {
+  margin-left: 5px;
+}
+
+.review-content button {
+  margin-right: 5px;
+}

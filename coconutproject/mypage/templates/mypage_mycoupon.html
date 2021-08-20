@@ -17,23 +17,24 @@
   <body class="main">
     {% include 'base.html' %}
         <div class="mypage-container">
-            {% include 'mypage.html' %}
-        <div>
-
-        <h1>mycoupon page</h1>
-        <br>
-        <br>
-        {% comment %} <p>{{coupon}}</p> {% endcomment %}
-        <div class = "mycoupon-conatainer">
-            {% comment %} <button onclick=location.href="{%url 'usecoupon' 1%}">사용하기</button> {% endcomment %}
+          {% include 'mypage.html' %}
+          <div class="mypage_right_container">
+            <h1>mycoupon page</h1>
+            <br>
+            <br>
+            {% comment %} <p>{{coupon}}</p> {% endcomment %}
+            <div class = "mycoupon-container">
+                {% comment %} <button onclick=location.href="{%url 'usecoupon' 1%}">사용하기</button> {% endcomment %}
+            </div>
         </div>
+        <div>
     
   </body>
 </html>
 
 <script>
     coupon = {{coupon|safe}}
-    var container = document.getElementsByClassName("mycoupon-conatainer")
+    var container = document.getElementsByClassName("mycoupon-container")
     for(var i=0; i<coupon.length -1 ;i++){
         var boxDIV = document.createElement("div")
         boxDIV.setAttribute("class","review-content")
