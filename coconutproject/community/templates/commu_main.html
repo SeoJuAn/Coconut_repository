@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 {% load static %}
 <head>
@@ -56,12 +55,13 @@
                     <br>
                 {%endif%}
             </div> -->
-
+            
+            <button onclick=location.href="{%url 'commu_create'%}">글쓰기</button>
             <div class="community-list">
-                {% for community in posts %}
+                {% for community in communitys %}
                 <a href="{%url 'commu_detail' community.id%}" class="">
                     <div class="community-item" >
-                        <img src="/static/img/main2.jpg" alt="">
+                        <img src="/static/img/main2.jpg" alt="" id="commu-photo">
                         <div class="community-info">
                             <div class="community-info-content">
                                 <h5>{{community.title}}</h5>
@@ -73,9 +73,9 @@
                 </a>
                 {% endfor %}
             </div>
-                
         </div>
     </div>
 
 </body>
 </html> 
+

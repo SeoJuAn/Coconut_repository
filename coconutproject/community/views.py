@@ -7,12 +7,12 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def commu_main(request):
-    communitys = Community.objects
+    communitys = Community.objects.all()
     community_list = Community.objects.all()
-    paginator = Paginator(community_list,10)
-    page = request.GET.get('page')
-    posts = paginator.get_page(page)
-    return render(request,'commu_main.html',{'communitys':communitys,'posts':posts})
+    # paginator = Paginator(community_list,10)
+    # page = request.GET.get('page')
+    # posts = paginator.get_page(page)
+    return render(request,'commu_main.html',{'communitys':communitys})
 
 def commu_create(request):
     if request.method == "POST":
