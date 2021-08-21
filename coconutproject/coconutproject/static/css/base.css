@@ -71,7 +71,7 @@ h1 {
   background-color: var(--mint);
   font-size: 18px;
   font-family: InfinitySans-RegularA1;
-  box-shadow: 0 0 0 3px #cccc ;
+  box-shadow: 0 0 0 3px #cccc;
   padding: 0.5% 0;
 }
 
@@ -86,7 +86,7 @@ h1 {
   padding: 0;
 }
 
-.main-nav-logo a{
+.main-nav-logo a {
   margin: 0;
   padding: 0;
   height: 47px;
@@ -129,7 +129,7 @@ h1 {
 }
 
 @media screen and (max-width: 1080px) {
-  .main-nav-container{
+  .main-nav-container {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -137,29 +137,28 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
   }
-  .nav-item-left-container{
+  .nav-item-left-container {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%
-}
-  .nav-item-right-container{
-      display: none;
+    width: 100%;
+  }
+  .nav-item-right-container {
+    display: none;
 
-      justify-content: center;
-      align-items: center;
-      width: 100%
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
   .navbar-tooglebox {
     display: block;
   }
 
   .nav-item-right-container.active,
-  .nav-item-left-container.active{
+  .nav-item-left-container.active {
     display: flex;
   }
-
 }
 
 /*account*/
@@ -316,10 +315,10 @@ select {
 
 table {
   width: 100%;
-};
+}
 
 td {
- margin: 2% 25%;
+  margin: 2% 25%;
 }
 
 .community_main {
@@ -341,7 +340,6 @@ td {
   border-color: black;
 }
 
-
 th {
   width: 300px;
   height: 40px;
@@ -355,7 +353,7 @@ tr {
 }
 
 .community_main_title {
-  margin-bottom: 2%;
+  margin-bottom: 0;
 }
 
 .community_main_numbering {
@@ -365,11 +363,9 @@ tr {
   margin: 2% 0;
 }
 
-.community_main_numbering a { 
+.community_main_numbering a {
   margin: 0 5px;
 }
-
-
 
 .scan_container {
   display: flex;

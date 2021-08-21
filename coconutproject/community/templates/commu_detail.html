@@ -42,13 +42,26 @@
         </form>
         <div class="detail-title">
           <h3>{{community.title}}</h3>
-          <h4>{{community.writer}}</h4>
+          <div class="community_date">
+            <h4>{{community.writer}}</h4>
+            <p>{{community.subdate}}</p>
+          </div>
         </div>
       </div>
       <div class="community_detail_content">
-        <div class="community_date">
-          <p>{{community.subdate}}</p>
-        </div>
+        <div class="photo-container">
+          <div class="slide">
+            <div class="images">
+            </div>
+          </div>
+          <div class="slide_btn_box">
+            <!-- <button type="button" class="slide_btn_prev">Prev</button>
+            <button type="button" class="slide_btn_next">Next</button> -->
+          </div>
+              <!-- // .slide_btn_box -->
+              <ul class="slide_pagination"></ul>
+              <!-- // .slide_pagination -->
+          </div>
         <p>{{community.content}}</p>
       </div>
     </div>
@@ -56,15 +69,52 @@
 </html>
 
 <script>
-  var communityPictures = document.getElementsByClassName("community_detail_content");
+  var communityPictures = document.getElementsByClassName("images");
+  var slideBtn = document.getElementsByClassName("slide_btn_box");
   photos = {{photos|safe}}
+
   for(i in photos){
     console.log(photos[i])
+    if(i==0){
+      slideBtn[0].innerHTML='<button type="button" class="slide_btn_prev">Prev</button> <button type="button" class="slide_btn_next">Next</button>'
+    }
     
     var photoDIV = document.createElement("div")
-    photoDIV.innerHTML = "<img src="+photos[i]+" height='180' width='180'"+">"+"&nbsp;&nbsp;"
+    photoDIV.innerHTML = "<img src="+photos[i]+">"+"&nbsp;&nbsp;"
     photoDIV.setAttribute("class","detail_community_photo")
     communityPictures[0].appendChild(photoDIV)
     
   }
+</script>
+
+<script>
+const slideList = document.querySelector('.images'); // Slide parent dom
+const slideContents = document.querySelectorAll('.detail_community_photo'); // each slide dom
+const slideBtnNext = document.querySelector('.slide_btn_next'); // next button
+const slideBtnPrev = document.querySelector('.slide_btn_prev'); // prev button
+const pagination = document.querySelector('.slide_pagination');
+const slideLen = slideContents.length; // slide length
+const slideWidth = 400; // slide width
+const slideSpeed = 300; // slide speed
+slideList.style.width = slideWidth * (slideLen) + "px";
+let curIndex = 0; // current slide index (except copied slide)
+/** Next Button Event */
+slideBtnNext.addEventListener('click', function() {
+  if (curIndex <= slideLen - 1) {
+    slideList.style.transition = slideSpeed + "ms";
+    slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex + 1)) + "px, 0px, 0px)";
+  }
+  curSlide = slideContents[++curIndex];
+});
+
+slideBtnPrev.addEventListener('click', function() {
+  console.log("prev")
+  if (curIndex >= 0) {
+    slideList.style.transition = slideSpeed - "ms";
+    slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex)) + "px, 0px, 0px)";
+  }
+  curSlide = slideContents[--curIndex];
+  });
+
+
 </script>
