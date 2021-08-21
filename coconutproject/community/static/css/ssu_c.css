@@ -182,8 +182,8 @@ h4 {
 .detail_community_photo img {
   display: table;
   float: left;
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   padding: 10px;
 }
 
