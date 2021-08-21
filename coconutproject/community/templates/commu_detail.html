@@ -22,7 +22,6 @@
         <form method="POST" action="{%url 'commu_like' %}">
           {%csrf_token%}
           <div class="cmd">
-            
             <input
               type="hidden"
               class="communityid"
@@ -30,7 +29,7 @@
               name="communityid"
               value="{{community.id}}"
             />
-            <img src="/static/img/Heart.png" alt="" class="like">
+            <img src="/static/img/Heart.png" alt="" class="like" />
             <input
               type="submit"
               name="save"
@@ -51,17 +50,16 @@
       <div class="community_detail_content">
         <div class="photo-container">
           <div class="slide">
-            <div class="images">
-            </div>
+            <div class="images"></div>
           </div>
           <div class="slide_btn_box">
             <!-- <button type="button" class="slide_btn_prev">Prev</button>
             <button type="button" class="slide_btn_next">Next</button> -->
           </div>
-              <!-- // .slide_btn_box -->
-              <ul class="slide_pagination"></ul>
-              <!-- // .slide_pagination -->
-          </div>
+          <!-- // .slide_btn_box -->
+          <ul class="slide_pagination"></ul>
+          <!-- // .slide_pagination -->
+        </div>
         <p>{{community.content}}</p>
       </div>
     </div>
@@ -78,43 +76,43 @@
     if(i==0){
       slideBtn[0].innerHTML='<button type="button" class="slide_btn_prev">Prev</button> <button type="button" class="slide_btn_next">Next</button>'
     }
-    
+
     var photoDIV = document.createElement("div")
     photoDIV.innerHTML = "<img src="+photos[i]+">"+"&nbsp;&nbsp;"
     photoDIV.setAttribute("class","detail_community_photo")
     communityPictures[0].appendChild(photoDIV)
-    
+
   }
 </script>
 
 <script>
-const slideList = document.querySelector('.images'); // Slide parent dom
-const slideContents = document.querySelectorAll('.detail_community_photo'); // each slide dom
-const slideBtnNext = document.querySelector('.slide_btn_next'); // next button
-const slideBtnPrev = document.querySelector('.slide_btn_prev'); // prev button
-const pagination = document.querySelector('.slide_pagination');
-const slideLen = slideContents.length; // slide length
-const slideWidth = 300; // slide width
-const slideSpeed = 300; // slide speed
-slideList.style.width = slideWidth * (slideLen) + "px";
-let curIndex = 0; // current slide index (except copied slide)
-/** Next Button Event */
-slideBtnNext.addEventListener('click', function() {
-  if (curIndex <= slideLen - 1) {
-    slideList.style.transition = slideSpeed + "ms";
-    slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex + 1)) + "px, 0px, 0px)";
-  }
-  curSlide = slideContents[++curIndex];
-});
-
-slideBtnPrev.addEventListener('click', function() {
-  console.log("prev")
-  if (curIndex >= 0) {
-    slideList.style.transition = slideSpeed - "ms";
-    slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex)) + "px, 0px, 0px)";
-  }
-  curSlide = slideContents[--curIndex];
+  const slideList = document.querySelector(".images"); // Slide parent dom
+  const slideContents = document.querySelectorAll(".detail_community_photo"); // each slide dom
+  const slideBtnNext = document.querySelector(".slide_btn_next"); // next button
+  const slideBtnPrev = document.querySelector(".slide_btn_prev"); // prev button
+  const pagination = document.querySelector(".slide_pagination");
+  const slideLen = slideContents.length; // slide length
+  const slideWidth = 350; // slide width
+  const slideSpeed = 300; // slide speed
+  slideList.style.width = slideWidth * slideLen + "px";
+  let curIndex = 0; // current slide index (except copied slide)
+  /** Next Button Event */
+  slideBtnNext.addEventListener("click", function () {
+    if (curIndex <= slideLen - 1) {
+      slideList.style.transition = slideSpeed + "ms";
+      slideList.style.transform =
+        "translate3d(-" + slideWidth * (curIndex + 1) + "px, 0px, 0px)";
+    }
+    curSlide = slideContents[++curIndex];
   });
 
-
+  slideBtnPrev.addEventListener("click", function () {
+    console.log("prev");
+    if (curIndex >= 0) {
+      slideList.style.transition = slideSpeed - "ms";
+      slideList.style.transform =
+        "translate3d(-" + slideWidth * curIndex + "px, 0px, 0px)";
+    }
+    curSlide = slideContents[--curIndex];
+  });
 </script>

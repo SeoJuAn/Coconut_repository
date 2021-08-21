@@ -9,10 +9,19 @@ from django.core.paginator import Paginator
 def commu_main(request):
     communitys = Community.objects.all()
     community_list = Community.objects.all()
+    photo = Photo.objects.all()
+    photos= []
+    for i in range(100):
+        photos.append("/static/img/main2.jpg")
+
+    for i in range(len(photo)):
+            #print(str(photo[j].store))
+            if photos[photo[i].community.id] == "/static/img/main2.jpg" :
+                photos[photo[i].community.id] = photo[i].image.url;
     # paginator = Paginator(community_list,10)
     # page = request.GET.get('page')
     # posts = paginator.get_page(page)
-    return render(request,'commu_main.html',{'communitys':communitys})
+    return render(request,'commu_main.html',{'communitys':communitys,'photos':photos})
 
 def commu_create(request):
     if request.method == "POST":

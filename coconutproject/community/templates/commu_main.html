@@ -61,13 +61,16 @@
             <div class="community-list">
                 {% for community in communitys %}
                 <a href="{%url 'commu_detail' community.id%}" class="">
+                    <input value={{community.id}} type="text" hidden="hidden" class="img-num" />
                     <div class="community-item" >
-                        <img src="/static/img/main2.jpg" alt="" id="commu-photo">
+                        <div class="commu-img">
+                        </div>
                         <div class="community-info">
                             <div class="community-info-content">
                                 <h5>{{community.title}}</h5>
                                 <h6>{{community.writer}}</h6>
                                 <h6>{{community.subdate}}</h6>
+                                <h6>{{community.id}}</h6>
                             </div>
                         </div>
                     </div>
@@ -77,6 +80,18 @@
         </div>
     </div>
 
+    
 </body>
 </html> 
 
+<script>
+    var commuImg=document.getElementsByClassName("commu-img");
+    var imgNum=document.getElementsByClassName("img-num");
+    photos = {{photos|safe}}
+    var i;
+    for(i=0;i<=commuImg.length;i++){
+        commuImg[i].innerHTML= "<img src="+photos[imgNum[i].value]+" id='commu-photo'>";
+        console.log(imgNum[i].value);
+    }
+    
+</script>
