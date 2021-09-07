@@ -173,29 +173,29 @@ def purchasecoupon(request):
         customer = get_object_or_404(Customer,user_id = str(request.user))
         choice = request.POST['choice']
         # 사용자가 customer를 선택했다면
-        if choice == "5":
+        if choice == "10":
             print(choice)
-            customer.coupon += "5,"
-            customer.point -= 5
+            customer.coupon += "10,"
+            customer.point -= 10
             customer.save()
 
         # 사용자가 storeowner를 선택했다면
-        elif choice == "10":
-            print(choice)
-            customer.coupon += "10,"
-            customer.point -= 8
-            customer.save()
-
         elif choice == "15":
             print(choice)
             customer.coupon += "15,"
-            customer.point -= 12
+            customer.point -= 20
             customer.save()
 
         elif choice == "20":
             print(choice)
             customer.coupon += "20,"
-            customer.point -= 15
+            customer.point -= 30
+            customer.save()
+
+        elif choice == "25":
+            print(choice)
+            customer.coupon += "25,"
+            customer.point -= 40
             customer.save()
 
         customer = get_object_or_404(Customer,user_id = str(request.user))
